@@ -1,0 +1,94 @@
+.stars--click li {
+    cursor: pointer;
+}
+
+.stars .empty{
+    background-image: url(../../img/star.png);
+}
+
+.stars--click .empty:hover {
+    background-image: url(../../img/star.svg);
+}
+
+.m_reserve_modal{
+    display: none;
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+.m_reserve_modal--active{
+    display: block;
+}
+.m_reserve_body{
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 60px auto;
+    background-color: #fff;
+    padding: 19px 40px;
+}
+.m_reserve_close{
+    cursor: pointer;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    color: #fff;
+    font-weight: 600;
+    display: block;
+    border-radius: 50%;
+    background: red;
+    width: 20px;
+    text-align: center;
+    height: 20px;
+    font-size: 14px;
+}
+.m_reserve_title{
+    text-align: center;
+    display: block;
+    margin-bottom: 15px;
+    color: #1da8da;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.m_reserve_row{
+    margin-bottom: 5px;
+}
+.m_reserve_row__title{
+
+}
+.m_reserve_row__input{
+    width: 100%;
+    border: 1px solid #1da8da;
+    padding: 4px 5px;
+}
+.m_reserve_submit{
+    width: 50%;
+    border: 1px solid #1da8da;
+    background: #1da8da;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px 0 5px 0;
+    padding: 5px 21px;
+    margin: 10px auto 0 auto;
+    display: block;
+    transition:all .3s;
+}
+
+.m_reserve_submit:hover{
+    background: #fff;
+    color: #1da8da;
+    transition:all .3s;
+}
+
+.where-ul > li.spec{
+    display: block;
+    width: 45%;
+    float: left;
+    margin-right: 5%;
+}
+
+.where-ul > li.spec .where-text{
+    width: 100%;
+}
