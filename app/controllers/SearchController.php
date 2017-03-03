@@ -1,8 +1,21 @@
 <?php
 class SearchController extends BaseController {
     function getIndex () {
+        if (!Input::has('search'))
+            return App::abort(404);
 
-        return View::make('front.sample');
+        $search = Input:get('search');
+
+        $ar = array();
+        $ar['title'] = 'Поиск';
+        $ar['ar_role'] = SysCompanyRole::lists('name', 'id');
+
+        $ar['cities'] = SysCity::getAr();
+        $ar['city_id'] = SysCity::getCityID();
+        $ar['search'] = $search;
+
+
+        return View::make('front.search.index', $ar);
     }
 
     function postAjaxTag(){
