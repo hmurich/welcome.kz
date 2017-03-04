@@ -1,16 +1,14 @@
 <?php
 Route::get('/', 'IndexController@getIndex');
 Route::controller('index', 'IndexController');
-
 Route::controller('event', 'EventController');
 Route::controller('search', 'SearchController');
 Route::controller('show', 'ObjectController');
-
-
 Route::controller('map', 'MapController');
-
 Route::controller('lang', 'LangController');
 Route::controller('city', 'CityController');
+
+Route::controller('push', 'PushController');
 
 // company routes
 Route::get('login', 'LoginController@getIndex');
