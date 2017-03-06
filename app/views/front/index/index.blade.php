@@ -39,8 +39,10 @@
                     Welcome<br> to kazakhstan
                 </h1>
                 <form method="GET" action='{{ action("SearchController@getIndex") }}' class='js_send_search_form'>
-                    <input class="main-search__input js_send_search_value" type="text" placeholder="Я ищу..." name='search'>
-                    <img src='/front/img/search.png' class='js_send_search' />
+                    <div class="search-part">
+                    	<input class="search-part__input js_send_search_value" type="text" placeholder="Я ищу..." name='search'>
+                   		<input class="search-part__submit" type="submit">
+                   	</div>	
                 </form>
                 <span class="main-search__text">
                     Гостиница, хостел, отель, ресторан, кафе, фаст-фуд, доставка ЕДЫ ...

@@ -14,18 +14,28 @@
 @else
     <div class="zaved-big">
         <div class="zaved-big__inner">
-            <img class="zaved-big__img" src="/front/img/zaved-edit.jpg">
+            <div class="slider">
+                <div class="slider-item">
+                    <img class="zaved-big__img" src="/front/img/zaved-edit.jpg">
+                </div>
+                <div class="slider-item">
+                    <img class="zaved-big__img" src="/front/img/zaved-edit.jpg">
+                </div>
+                <div class="slider-item">
+                    <img class="zaved-big__img" src="/front/img/zaved-edit.jpg">
+                </div>                                
+            </div>
         </div>
     </div>
-    <ul class="right-photo">
-        <li class="right-photo__li">
+    <div class="right-photo">
+        <div class="right-photo__li">
             <img src="/front/img/mini-edit.jpg">
-        </li>
-        <li class="right-photo__li">
+        </div>
+        <div class="right-photo__li">
             <img src="/front/img/mini-edit.jpg">
-        </li>
-        <li class="right-photo__li">
+        </div>
+        <div class="right-photo__li">
             <img src="/front/img/mini-edit.jpg">
-        </li>
-    </ul>
+        </div>
+    </div>
 @endif

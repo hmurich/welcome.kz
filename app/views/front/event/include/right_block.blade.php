@@ -32,7 +32,7 @@
                     @endforeach
                 @endif
 
-                <input type='submit' />
+                <input class="but header-options__but" type='submit' />
 
             {{ Form::close() }}
 			<div class="show-filtr {{ (Input::has('role_id') ? 'show-filtr--active' : 'sdfsdf') }}">
@@ -47,9 +47,12 @@
         {{ Form::close() }}
 
 		<div class="header-bot">
-			<div class="header-bot__inner">
-				<input class="bot-search" type="text" placeholder="Я ищу...">
-			</div>
+            <div class="header-bot__inner">
+                <div class="bot-search">
+                    <input class="bot-search__input" type="text" placeholder="Я ищу...">
+                    <input class="bot-search__submit"  type="submit">
+                </div>
+            </div>
 		</div>
 	</div>
 	<div class="uzor uzor--one"></div>

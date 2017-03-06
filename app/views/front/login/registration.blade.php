@@ -11,7 +11,7 @@
                 <input class="vhod__input" name='name' type="text" placeholder="Наименование " required="">
                 <input class="vhod__input" name='address' type="text" placeholder="Адресс " required="">
                 <input class="vhod__input" name='phone' type="text" placeholder="Телефон" required="">
-                <textarea class="vhod__input" name='note' placeholder="Описание"></textarea>
+                <textarea class="vhod__textarea" name='note' placeholder="Описание"></textarea>
                 <div class="vhod-but">
                     <button class="but vhod-but__left" type="submit">Отправить</button>
                     <a class="but vhod-but__right" href="{{ action('LoginController@getIndex') }}">Назад</a>
