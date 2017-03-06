@@ -5,8 +5,10 @@
 <div class="main-part">
 	<div class="main-part__inner">
 		<div class="content-part">
-			<span class="h-heading">{{ $title }}</span>
-			<a class="but" href="{{ action('CabinetNewsController@getAdd', $object->id) }}">Добавить новость</a>
+			<div class="up-heading">
+                <span class="up-heading__heading">{{ $title }}</span>
+			    <a class="but" href="{{ action('CabinetNewsController@getAdd', $object->id) }}">Добавить новость</a>
+            </div>
 			<ul class="ncab-ul">
                 @foreach ($news as $n)
                     <li>

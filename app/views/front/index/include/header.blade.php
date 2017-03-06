@@ -2,7 +2,7 @@
     <span class="header-option">
         Welcome to Kazakhstan
     </span>
-    <div class="header-options">
+    <div class="header-options header-options--main"">
         <select class="header-options__select header-options__select--single js_change_city">
             <option selected="true" disabled>{{ $translator->getTransNameByKey('select_city', 'Выберите город'); }}</option>
             @foreach ($cities as $id => $name))

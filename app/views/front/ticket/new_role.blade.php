@@ -20,8 +20,7 @@
                 <input type='text' class='vhod__input' name='name' placeholder="Наименование заведения" value="{{ $company->name }}" required="" />
                 <input type='text' class='vhod__input' name='address' placeholder="Адресс" value="{{ $company->address }}" required="" />
                 <input type='text' class='vhod__input' name='phone' placeholder="Телефон" value="{{ $company->phone }}" required="" />
-                <textarea class='vhod__input' name='note' placeholder="Описание">{{ $company->note }}</textarea>
-
+                <textarea class='vhod__textarea' name='note' placeholder="Описание">{{ $company->note }}</textarea>
                 <div class="vhod-but">
                     <button class="but vhod-but__left" type="submit">Отправить запрос</button>
                 </div>

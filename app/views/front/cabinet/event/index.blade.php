@@ -5,17 +5,13 @@
 
 <div class="main-part">
 	<div class="main-part__inner">
-		<div class="content-part">
-			<div class="zaved-up">
-				<div class="upzaved-text">
-					<h3 class="upzaved-text__heading">
-						{{ $title }}
-					</h3>
-					<span class="upzaved-text__des">
-						<a href='{{ action("TicketController@getNewEvent", $object->id) }}'>Добавить</a>
-					</span>
-				</div>
-			</div>
+		<div class="content-part">					
+			<div class="up-heading">
+                <h3 class="up-heading__heading">
+				  {{ $title }}
+			   </h3>
+               <a class="but" href='{{ action("TicketController@getNewEvent", $object->id) }}'>Добавить</a>
+            </div>			
 			<ul class="where-ul">
                 @foreach ($events as $e)
                     <li>
