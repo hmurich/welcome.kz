@@ -34,7 +34,7 @@ class AdminBaseController extends BaseController {
             }
         }
         else
-            $items->orderBy('id', 'asc');
+            $items->orderBy('id', 'desc');
 
         return $items;
     }

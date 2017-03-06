@@ -1,7 +1,6 @@
 <?php
 class AdminTransKeyContrroller extends AdminBaseController {
     function getIndex () {
-
         $data = $this->trimData(Input::all());
         $items = TransKey::where('id', '>', 0);
 

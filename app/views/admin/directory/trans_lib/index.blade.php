@@ -1,6 +1,36 @@
 @extends('admin.layout')
 
 @section('content')
+{{ Form::open(array('url'=>'#filter', 'method' => 'get', 'role'=>'form')) }}
+    <div class="form-group">
+        <label class="col-md-2 control-label">Ключ</label>
+        <div class="col-md-10">
+            {{ Form::text('filter[key]', Input::get('filter.key'), array('class'=>'form-control ')) }}
+         </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Есть перевод</label>
+        <div class="col-md-10">
+            {{ Form::select('filter[is_have]', array(0=>'Нет', 1=>'Да'), Input::get('filter.is_have'), array('class'=>'form-control ')) }}
+         </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Строка на русском</label>
+        <div class="col-md-10">
+            {{ Form::text('russion_text', Input::get('russion_text'), array('class'=>'form-control ')) }}
+         </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">{{ $lang->name }}</label>
+        <div class="col-md-10">
+            {{ Form::text('filter[trans_name]', Input::get('filter.trans_name'), array('class'=>'form-control ')) }}
+         </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Отфильтровать</button>
+{{ Form::close() }}
+
 <table class="table">
     <thead>
         <tr>

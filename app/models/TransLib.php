@@ -4,10 +4,10 @@ class TransLib extends Eloquent {
     protected $fillable = array('lang_id', 'key_id', 'trans_name', 'is_have', 'key');
     public $timestamps = false;
 
-	
+
 
     static function getFilterNameAr(){
-        return array('russian'=>'text', 'is_have'=>'number');
+        return array('is_have'=>'number', 'key'=>'text', 'trans_name'=>'text');
     }
 
     static function getSortNameAr(){

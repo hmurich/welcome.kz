@@ -17,10 +17,10 @@
                         <option value="{{ $id }}">{{ $translator->getTransNameByKey(SysDirectoryName::getTransKey($id)); }}</option>
                     @endforeach
                 </select>
-                <input type='text' class='vhod__input' name='name' placeholder="{{ $translator->getTransNameByKey('zaved_title'); }}" value="{{ $company->name }}" required="" />
-                <input type='text' class='vhod__input' name='address' placeholder="{{ $translator->getTransNameByKey('zaved_address'); }}" value="{{ $company->address }}" required="" />
-                <input type='text' class='vhod__input' name='phone' placeholder="{{ $translator->getTransNameByKey('zaved_phone'); }}" value="{{ $company->phone }}" required="" />
-                <textarea class='vhod__textarea' name='note' placeholder="{{ $translator->getTransNameByKey('zaved_note'); }}">{{ $company->note }}</textarea>
+                <input type='text' class='vhod__input' name='name' placeholder="{{ $translator->getTransNameByKey('zaved_title'); }}"  required="" />
+                <input type='text' class='vhod__input' name='address' placeholder="{{ $translator->getTransNameByKey('zaved_address'); }}"  required="" />
+                <input type='text' class='vhod__input' name='phone' placeholder="{{ $translator->getTransNameByKey('zaved_phone'); }}"  required="" />
+                <textarea class='vhod__textarea' name='note' placeholder="{{ $translator->getTransNameByKey('zaved_note'); }}"></textarea>
                 <div class="vhod-but">
                     <button class="but vhod-but__left" type="submit">{{ $translator->getTransNameByKey('ticket_send'); }}</button>
                 </div>

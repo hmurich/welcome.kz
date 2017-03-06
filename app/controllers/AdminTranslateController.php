@@ -14,6 +14,12 @@ class AdminTranslateController extends AdminBaseController {
         $sort_names = TransLib::getSortNameAr();
         $items = $this->sortItems($items, $data, $sort_names);
 
+        if (Input::has('russion_text') && Input::get('russion_text')){
+            $items = $items->whereHas('relKey', function($q) use ($data){
+                $q->where('name', 'like', '%'.$data['russion_text'].'%');
+            });
+        }
+
         $ar = array();
         $ar['title'] = 'Переводы с русского на "'.$lang->name.'"';
 
