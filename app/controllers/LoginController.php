@@ -2,7 +2,7 @@
 class LoginController extends PublicController {
     function getIndex () {
         $ar = array();
-        $ar['title'] = 'Вход в личный кабинет';
+        $ar['title'] = $this->translator->getTransNameByKey('login_title');
         $ar['translator'] = $this->translator;
 
         return View::make('front.login.index', $ar);
@@ -16,7 +16,7 @@ class LoginController extends PublicController {
 		);
 
 		if (!Auth::attempt($input,true)){
-            $alert = "Неправильный логин или пароль";
+            $alert = $this->translator->getTransNameByKey('login_wrond_mess');
     		return Redirect::back()->withError($alert);
         }
 
@@ -29,7 +29,7 @@ class LoginController extends PublicController {
 
     function getRegistration () {
         $ar = array();
-        $ar['title'] = 'Регистрация';
+        $ar['title'] = $this->translator->getTransNameByKey('registr_title');
         $ar['translator'] = $this->translator;
 
         return View::make('front.login.registration', $ar);
@@ -66,12 +66,12 @@ class LoginController extends PublicController {
 
         DB::commit();
 
-        return Redirect::action('LoginController@getIndex')->with('success', 'Вы успешно прошли регистрацию');
+        return Redirect::action('LoginController@getIndex')->with('success', $this->translator->getTransNameByKey('registr_success_mess'));
     }
 
     function getForgotPass () {
         $ar = array();
-        $ar['title'] = 'Забыли пароль';
+        $ar['title'] = $this->translator->getTransNameByKey('forgot_pass_title');
         $ar['translator'] = $this->translator;
 
         return View::make('front.login.forgot_pass', $ar);
@@ -80,7 +80,7 @@ class LoginController extends PublicController {
     function postForgotPass(){
         $user = User::where(array('email'=>Input::get('email'), 'type_id'=>3))->first();
         if (!$user)
-            return Redirect::back()->with('error', 'Указанный адрес электронной почты не существует');
+            return Redirect::back()->with('error', $this->translator->getTransNameByKey('forgot_pass_wrond_mess'));
 
         $for_pass = UserForgotPass::where('user_id', $user->id)->first();
         if (!$for_pass){
@@ -98,7 +98,7 @@ class LoginController extends PublicController {
 
         MailSend::send($user->email, 'Инструкция по получению нового пароля', $note, $company->name);
 
-        return Redirect::action('LoginController@getIndex')->with('success', 'На Ваш почтовый адресс были высланы инстукции по восстановлению пароля');
+        return Redirect::action('LoginController@getIndex')->with('success', $this->translator->getTransNameByKey('forgot_pass_success_mess'));
     }
 
     function getNewPassword(){
@@ -123,7 +123,7 @@ class LoginController extends PublicController {
 
         MailSend::send($user->email, 'Новый пароль для входа в кабинет', $note, $company->name);
 
-        return Redirect::action('LoginController@getIndex')->with('success', 'На Ваш почтовый адресс были выслан новый пароль');
+        return Redirect::action('LoginController@getIndex')->with('success', $this->translator->getTransNameByKey('forgot_pass_success_mess_second'));
     }
 
 

@@ -14,7 +14,8 @@ class MapController extends PublicController {
             $filters = $filters->where('id', '<>', $filter_1->id);
 
         $ar = array();
-        $ar['title'] = $cat->name;
+        $ar['title'] = $this->translator->getTransNameByKey(SysCompanyCat::getTransKey($cat->id), $cat->name);
+
         $ar['cat'] = $cat;
         $ar['filters'] = $filters->orderBy('sort_index', 'asc')->get();
         $ar['filter_1'] = $filter_1;
@@ -120,7 +121,8 @@ class MapController extends PublicController {
 
         $fields =  $f->relSpecialData()->where('show_filter', 1)->get();
         foreach ($fields as $i) {
-            $options[$i->filter_name] = implode(", ", $i->getVal());
+            $filter_name = $this->translator->getTransNameByKey(SysFilter::getTransKey($i->filter_id));
+            $options[$filter_name] = implode(", ", $i->getVal());
         }
 
         $ar['options'] = $options;

@@ -34,7 +34,7 @@
                             <li>
                                 <a class="zaved-item {{ ($role_id == $object->role_id ? 'zaved-item--active' : 'zaved-item') }}"
                                     href="{{ action('ObjectController@getIndex', $id) }}">
-                                    {{ $ar_role[$role_id] }}
+                                    {{ $translator->getTransNameByKey(SysCompanyRole::getTransKey($role_id)) }}
                                 </a>
                             </li>
                         @endforeach
@@ -48,7 +48,7 @@
                 <div class="zaved-middle__left">
                     <div class="middle-info">
                         <div class="rating">
-                            <span class="rating__text">Рейтинг:</span>
+                            <span class="rating__text">{{ $translator->getTransNameByKey('raiting') }}:</span>
                             <ul class="stars">
                                 {{ ModelSnipet::generateStar($score->score_avg) }}
                             </ul>
@@ -59,21 +59,21 @@
                             </div>
                         </div>
                         <div class="views">
-                            <span>Просмотров:</span>
-                            {{ $object->view_total }} человек
+                            <span>{{ $translator->getTransNameByKey('wathc') }}:</span>
+                            {{ $object->view_total }} {{ $translator->getTransNameByKey('people') }}
                         </div>
                         @if ($object->relTaxi)
                             <div class="views">
-                                <span>Такси:</span>
+                                <span>{{ $translator->getTransNameByKey('taxi_name') }}:</span>
                                 <a href="tel:{{ $object->relTaxi->phone }}"> {{ $object->relTaxi->phone }}</a>
                             </div>
                         @endif
-                        <a class="but middle-info__but" href="#map">Показать на карте</a>
+                        <a class="but middle-info__but" href="#map">{{ $translator->getTransNameByKey('show_on_map') }}</a>
                     </div>
                 </div>
                 @if ($role->is_reserve && $object->is_reserve)
                     <div class="zaved-middle__right">
-                        <a class="but js_call_reserve_modal" href="#">Забронировать</a>
+                        <a class="but js_call_reserve_modal" href="#">{{ $translator->getTransNameByKey('bron_button') }}</a>
                     </div>
                 @endif
             </div>
@@ -81,16 +81,16 @@
                 <div class="zaved-content__left">
                     <div class="zaved-info">
                         <ul class="spisok">
-                            <li><span>Наименование:</span>{{ $object->name }}</li>
+                            <li><span>{{ $translator->getTransNameByKey('zaved_title') }}:</span>{{ $object->name }}</li>
                             @if ($standart_data)
-                                <li><span>Слоган:</span>{{ $standart_data->slogan }}</li>
-                                <li><span>Адрес:</span>{{ $standart_data->address }}</li>
-                                <li><span>Телефоны:</span>{{ $standart_data->phone }}</li>
+                                <li><span>{{ $translator->getTransNameByKey('zaved_slogan') }}:</span>{{ $standart_data->slogan }}</li>
+                                <li><span>{{ $translator->getTransNameByKey('zaved_address') }}:</span>{{ $standart_data->address }}</li>
+                                <li><span>{{ $translator->getTransNameByKey('zaved_phone') }}:</span>{{ $standart_data->phone }}</li>
                             @endif
 
                             @if ($special_data)
                                 @foreach ($special_data as $s)
-                                    <li><span>{{ $s->filter_name }}:</span> {{ implode(",", $s->getVal()) }}</li>
+                                    <li><span>{{ $translator->getTransNameByKey(SysFilter::getTransKey($s->filter_id)) }}:</span> {{ implode(",", $s->getVal()) }}</li>
                                 @endforeach
                             @endif
                         </ul>

@@ -5,6 +5,18 @@ class TestController extends BaseController {
     }
 
     function getGenerateTransWord () {
+/*
+        $items = SysFilterName::all();
+        foreach ($items as $i) {
+            $i->setNewTransKey();
+        }
+
+        $items = SysFilter::all();
+        foreach ($items as $i) {
+            $i->setNewTransKey();
+        }
+
+
         $items = SysDirectoryName::all();
         foreach ($items as $i) {
             $i->setNewTransKey();
@@ -24,6 +36,7 @@ class TestController extends BaseController {
         foreach ($items as $i) {
             $i->setNewTransKey();
         }
+        */
     }
 
     function getTranslator(){
@@ -31,7 +44,7 @@ class TestController extends BaseController {
 
         $translator = new Translator();
     	$translator->setSessionLangId(3);
-    	
+
         echo '<pre>ar at session '; print_r((array)json_decode(Cache::get('ar_lang_1'), true)); echo '</pre>';
         echo $translator->getSessionLangId().'<br />';
         echo $translator->getLangId().'<br />';

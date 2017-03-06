@@ -11,7 +11,7 @@ class CabinetCommentController extends PublicController {
         $comments = Comment::where('object_id', $object->id)->with('relObject')->orderBy('id', 'desc')->get();
 
         $ar = array();
-        $ar['title'] = 'Отзывы';
+        $ar['title'] = $this->translator->getTransNameByKey('reviews');
         $ar['object'] = $object;
 
         $ar['comments'] = $comments;
@@ -19,12 +19,14 @@ class CabinetCommentController extends PublicController {
         $ar['role'] = $object->relRole;
         $ar['ar_role'] = SysCompanyRole::lists('name', 'id');
 
+        $ar['translator'] = $this->translator;
+
         return View::make('front.cabinet.comment.index', $ar);
     }
 
     function getIsPublish ($object_id, $comment_id) {
-        return Redirect::back()->with('success', 'Данные сохранены успешна');
-        
+        return Redirect::back()->with('success', $this->translator->getTransNameByKey('reviews_save_msg'));
+
         $user = Auth::user();
         $company = $user->relCompany;
         $ar_objects = $company->relObjects()->lists('id');
@@ -39,6 +41,6 @@ class CabinetCommentController extends PublicController {
         $comment->is_publish = ($comment->is_publish ? 0 : 1);
         $comment->save();
 
-        return Redirect::back()->with('success', 'Данные сохранены успешна');
+        return Redirect::back()->with('success', $this->translator->getTransNameByKey('reviews_save_msg'));
     }
 }

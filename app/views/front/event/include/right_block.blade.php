@@ -15,16 +15,16 @@
                 </select>
 
                 <select class="header-options__select" name='role_id'>
-    				<option selected="true" value="0">Выберите роль</option>
+    				<option selected="true" value="0">{{ $translator->getTransNameByKey('select_role'); }}</option>
                     @foreach ($ar_role as $id => $name))
                         <option value='{{ $id }}' {{ (Input::get("role_id") == $id ? 'selected' : null) }}>
-                            {{ $name }}
+                            {{ $translator->getTransNameByKey(SysCompanyRole::getTransKey($id), $name); }}
                         </option>
                     @endforeach
     			</select>
 
-                <input type='text' class='header-options__select' name='name'  placeholder="Укажите название" value='{{ Input::get("name") }}' />
-                <input type='text' class='header-options__select' name='company_name'  placeholder="Укажите название завдение" value='{{ Input::get("company_name") }}' />
+                <input type='text' class='header-options__select' name='name'  placeholder="{{ $translator->getTransNameByKey('set_event_title') }}" value='{{ Input::get("name") }}' />
+                <input type='text' class='header-options__select' name='company_name'  placeholder="{{ $translator->getTransNameByKey('set_zaved_title') }}" value='{{ Input::get("company_name") }}' />
 
                 @if (Input::has('date'))
                     @foreach (Input::get('date') as $k=>$v)
@@ -35,8 +35,8 @@
                 <input class="but header-options__but" type='submit' />
 
             {{ Form::close() }}
-			<div class="show-filtr {{ (Input::has('role_id') ? 'show-filtr--active' : 'sdfsdf') }}">
-				<span data-close='Закрыть фильтр' data-open='Открыть фильтр'>{{ (Input::has('role_id') ? 'Закрыть фильтр' : 'Открыть фильтр') }}</span>
+			<div class="show-filtr {{ (Input::has('role_id') ? 'show-filtr--active' : 'sdfsdf') }}" data-close='{{ $translator->getTransNameByKey('close_filter'); }}' data-open='{{ $translator->getTransNameByKey('open_filter'); }}'>
+				<span>{{ (Input::has('role_id') ? $translator->getTransNameByKey('close_filter') : $translator->getTransNameByKey('open_filter')) }}</span>
 			</div>
 		</div>
         {{ Form::open(array('url'=>action('EventController@getIndex'), 'method' => 'get', 'class'=>'js_datepicker_form')) }}
@@ -49,7 +49,7 @@
 		<div class="header-bot">
             <div class="header-bot__inner">
                 <div class="bot-search">
-                    <input class="bot-search__input" type="text" placeholder="Я ищу...">
+                    <input class="bot-search__input" type="text" placeholder="{{ $translator->getTransNameByKey('i_find'); }}">
                     <input class="bot-search__submit"  type="submit">
                 </div>
             </div>

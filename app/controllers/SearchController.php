@@ -23,7 +23,7 @@ class SearchController extends PublicController {
         $items = $this->generateItemAr($items);
 
         $ar = array();
-        $ar['title'] = 'Поиск';
+        $ar['title'] = $this->translator->getTransNameByKey('search_title');
         $ar['ar_role'] = SysCompanyRole::lists('name', 'id');
 
         $ar['cities'] = SysCity::getAr();
@@ -71,7 +71,8 @@ class SearchController extends PublicController {
 
             $fields =  $f->relSpecialData()->where('show_filter', 1)->get();
             foreach ($fields as $i) {
-                $options[$i->filter_name] = implode(", ", $i->getVal());
+                $filter_name = $this->translator->getTransNameByKey(SysFilter::getTransKey($i->filter_id));
+                $options[$filter_name] = implode(", ", $i->getVal());
             }
 
             $ar['options'] = $options;

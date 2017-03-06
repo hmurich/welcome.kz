@@ -14,9 +14,9 @@
 					<span class="upzaved-text__des">
 						<a href='{{ action("CabinetReserveController@getOpenReserve", $object->id) }}'>
                             @if ($object->is_reserve)
-                                Закрыть бронирование
+                                {{ $translator->getTransNameByKey('bron_close_status') }}
                             @else
-                                Открыть бронирование
+								{{ $translator->getTransNameByKey('bron_open_status') }} 
                             @endif
                         </a>
 					</span>
@@ -34,17 +34,17 @@
                                     <li>
                                         {{ $r->note }}
                                     </li>
-                                    <li><b>Телефон:</b> {{ $r->phone }}</li>
+                                    <li><b>{{ $translator->getTransNameByKey('bron_phone') }}:</b> {{ $r->phone }}</li>
                                     <li><b>Email:</b> {{ $r->email }}</li>
-                                    <li><b>Дата заезда:</b> {{ $r->enter_date }}</li>
-                                    <li><b>Время заезда:</b> {{ $r->enter_time }}</li>
-                                    <li><b>Послано:</b> {{ $r->created_at }}</li>
+                                    <li><b>{{ $translator->getTransNameByKey('bron_date') }}:</b> {{ $r->enter_date }}</li>
+                                    <li><b>{{ $translator->getTransNameByKey('bron_time') }}:</b> {{ $r->enter_time }}</li>
+                                    <li><b>{{ $translator->getTransNameByKey('bron_create_at') }}:</b> {{ $r->created_at }}</li>
                                 </ul>
                                 <div class="where-rate">
                                     @if (!$r->is_accept)
-                                        <a class="but where-rate__but" href="{{ action('CabinetReserveController@getAccept', array($r->object_id, $r->id)) }}">Закрыть</a>
+                                        <a class="but where-rate__but" href="{{ action('CabinetReserveController@getAccept', array($r->object_id, $r->id)) }}">{{ $translator->getTransNameByKey('bron_has_close') }}</a>
                                     @else
-                                        <span class="but where-rate__but">Закрыто</span>
+                                        <span class="but where-rate__but">{{ $translator->getTransNameByKey('bron_has_closed') }}</span>
                                     @endif
                                 </div>
                             </div>

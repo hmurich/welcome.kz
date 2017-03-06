@@ -22,7 +22,7 @@
                             <li>
                                 <a class="zaved-item {{ ($role_id == $object->role_id ? 'zaved-item--active' : 'zaved-item') }}"
                                     href="{{ action('ObjectController@getIndex', $id) }}">
-                                    {{ $ar_role[$role_id] }}
+                                    {{ $translator->getTransNameByKey(SysCompanyRole::getTransKey($role_id)) }}
                                 </a>
                             </li>
                         @endforeach

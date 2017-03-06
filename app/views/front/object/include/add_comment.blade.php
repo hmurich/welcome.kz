@@ -1,7 +1,7 @@
-<span class="zaved-info__heading">Отзывы</span>
+<span class="zaved-info__heading">{{ $translator->getTransNameByKey('comment_title') }}</span>
 @if (Auth::check())
     {{ Form::open(array('url'=>action('ObjectController@postComment', $object->id), 'method' => 'post', 'role'=>'form')) }}
-        <input type='text' name='title' placeholder="Ваше имя" required=""/> <br />
+        <input type='text' name='title' placeholder="{{ $translator->getTransNameByKey('comment_name') }}" required=""/> <br />
         <ul class="stars stars--click js_stars">
             <li data-score='1'></li>
             <li class='empty' data-score='2'></li>
@@ -11,7 +11,7 @@
         </ul>
         <input type="hidden" name='score' class="js_stars_val" value="1">
         <br /><br />
-        <textarea name='note' placeholder="Ваш отзыв" required=""></textarea> <br />
+        <textarea name='note' placeholder="{{ $translator->getTransNameByKey('comment_note') }}" required=""></textarea> <br />
         <input type='submit' />
     {{ Form::close() }}
 @else
@@ -22,7 +22,7 @@
         $uri = str_replace("/", "%2F", $uri);
     ?>
     <script src="//ulogin.ru/js/ulogin.js"></script>
-    Авторизуйтесь для выставления рейтинга
+    {{ $translator->getTransNameByKey('auth_social_title') }}
     <div id="uLogin"
         data-ulogin="display=small;theme=classic;fields=first_name,last_name;providers=vkontakte,odnoklassniki,mailru,facebook;hidden=other;redirect_uri=http%3A%2F%2F{{ $_SERVER['HTTP_HOST'].$uri }};mobilebuttons=0;">
     </div>
@@ -36,7 +36,7 @@
                     <span class="otzyv-up__name">{{ $c->title }}</span>
                     <span class="otzyv-up__date">{{ $c->created_at }}</span>
                     <div class="rating otzyv-up__rating">
-                        <span class="rating__text">Рейтинг:</span>
+                        <span class="rating__text">{{ $translator->getTransNameByKey('Рейтинг') }}:</span>
                         <ul class="stars">
                             {{ ModelSnipet::generateStar($c->score) }}
                         </ul>

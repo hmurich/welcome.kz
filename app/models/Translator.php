@@ -42,7 +42,6 @@ class Translator {
 	}
 
     private function getTransFromBD($key, $name){
-        
         if ($this->lang_id != $this->def_lang_id){
             $el = TransLib::where('key', $key)->where('lang_id', $this->lang_id)->where('is_have', 1)->first();
             if ($el)

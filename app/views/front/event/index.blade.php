@@ -15,7 +15,7 @@
 						{{ $title }}
 					</h3>
 					<span class="upzaved-text__des">
-						Мы вам поможем!
+						{{ $translator->getTransNameByKey('event_slogan') }}
 					</span>
 				</div>
 			</div>
@@ -32,17 +32,17 @@
                                 </span>
                                 <ul class="cont-ul">
                                     <li> {{ $e->note }}</li>
-                                    <li><b>Дата события:</b> {{ $e->date_event_name }}</li>
-                                    <li><b>Время события:</b> {{ $e->time_event }}</li>
-                                    <li><b>Продолжительность:</b> {{ $e->duration }}</li>
-                                    <li><b>Заведение:</b> {{ $e->relObject->name }}</li>
-                                    <li><b>Адрес:</b> {{ $e->relObject->relStandartData->address }}</li>
-                                    <li><b>Телефоны:</b> {{ $e->relObject->relStandartData->phone }}</li>
+                                    <li><b>{{ $translator->getTransNameByKey('event_date') }}:</b> {{ $e->date_event_name }}</li>
+                                    <li><b>{{ $translator->getTransNameByKey('event_time') }}:</b> {{ $e->time_event }}</li>
+                                    <li><b>{{ $translator->getTransNameByKey('event_duration') }}:</b> {{ $e->duration }}</li>
+                                    <li><b>{{ $translator->getTransNameByKey('event_zaved') }}:</b> {{ $e->relObject->name }}</li>
+                                    <li><b>{{ $translator->getTransNameByKey('event_address') }}:</b> {{ $e->relObject->relStandartData->address }}</li>
+                                    <li><b>{{ $translator->getTransNameByKey('event_phone') }}:</b> {{ $e->relObject->relStandartData->phone }}</li>
 
                                 </ul>
                                 <div class="where-rate">
                                     <div class="rating">
-                                        <span class="rating__text">Рейтинг:</span>
+                                        <span class="rating__text">{{ $translator->getTransNameByKey('raiting') }}:</span>
                                         <ul class="stars">
                                             {{ ModelSnipet::generateStar($e->relObject->relScore->score_avg) }}
                                         </ul>
@@ -53,9 +53,9 @@
                                         </div>
                                     </div>
                                     @if ($e->relObject->is_active && $e->relObject->is_open)
-                                        <a class="but where-rate__but" href="{{ action('ObjectController@getIndex', $e->object_id) }}">Кабинет</a>
+                                        <a class="but where-rate__but" href="{{ action('ObjectController@getIndex', $e->object_id) }}">{{ $translator->getTransNameByKey('cabinet') }}</a>
                                     @else
-                                        <span class="but where-rate__but">Кабинет закрыт</span>
+                                        <span class="but where-rate__but">{{ $translator->getTransNameByKey('cabinet_close') }}</span>
                                     @endif
                                 </div>
                             </div>

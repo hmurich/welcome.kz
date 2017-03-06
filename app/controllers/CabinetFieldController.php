@@ -16,7 +16,7 @@ class CabinetFieldController extends PublicController {
         }
 
         $ar = array();
-        $ar['title'] = 'Редактировать информацию';
+        $ar['title'] = $this->translator->getTransNameByKey('edit_infrom');
         $ar['object'] = $object;
         $ar['other_objects'] = $other_objects;
         $ar['standart_data'] = $object->relStandartData;
@@ -30,6 +30,8 @@ class CabinetFieldController extends PublicController {
         $ar['sys_special_data'] = SysFilterRole::where('role_id', $object->role_id)->with('relFilter')->orderBy('sort_index', 'asc')->get();
 
         $ar['ar_city'] = SysCity::getAr();
+
+        $ar['translator'] = $this->translator;
 
         return View::make('front.cabinet.field.index', $ar);
     }
@@ -133,7 +135,7 @@ class CabinetFieldController extends PublicController {
 
         DB::commit();
 
-        return Redirect::back()->with('success', 'Информация сохранена успешно');
+        return Redirect::back()->with('success', $this->translator->getTransNameByKey('edit_infrom_success_mess'));
     }
 
 }

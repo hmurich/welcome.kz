@@ -1,71 +1,54 @@
 <header class="header">
     <div class="header__inner">
         <span class="header-option">
-            Личный кабинет
+            {{ $translator->getTransNameByKey('personal_cabinet') }}
         </span>
         <br/>
             @if (!$object->is_active)
-                Кабинет на модерации
+                {{ $translator->getTransNameByKey('cabinet_on_moderate') }}
             @elseif ($object->is_open)
-                <a href='{{ action("CabinetController@getOpenDoor", $object->id) }}'>Закрыть кабинет</a>
+                <a href='{{ action("CabinetController@getOpenDoor", $object->id) }}'>{{ $translator->getTransNameByKey('close_cabinet') }} </a>
             @else
-                <a href='{{ action("CabinetController@getOpenDoor", $object->id) }}'>Открыть кабинет</a>
+                <a href='{{ action("CabinetController@getOpenDoor", $object->id) }}'>{{ $translator->getTransNameByKey('open_cabinet') }}</a>
             @endif
-        <!--
-            <div class="user-info">
-                <img class="user-info__img" src="https://api.fnkr.net/testimg/70x90/00CED1/FFF/?text=img+placeholder" >
-                <div class="user-text">
-                    <span class="user-text__heading">Название заведени</span>
-                    <span class="user-text__text">
-                        Номера:
-                    </span>
-                    <span class="user-text__text">
-                        Спецуслуги:
-                    </span>
-                    <span class="user-text__regym">
-                        Режим работы:
-                    </span>
-                </div>
-            </div>
-        -->
         <ul class="cab-menu">
             <li class="cab-menu__li cab-menu__li--approve">
-                <a href="{{ action('CabinetController@getIndex', $object->id) }}"><span>Личный кабинет</span></a>
+                <a href="{{ action('CabinetController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('personal_cabinet') }}</span></a>
             </li>
             <li class="cab-menu__li cab-menu__li--edit">
-                <a href="{{ action('CabinetFieldController@getIndex', $object->id) }}"><span>Редактировать информацию</span></a>
+                <a href="{{ action('CabinetFieldController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('edit_inform') }}</span></a>
             </li>
 
             <li class="cab-menu__li cab-menu__li--approve">
-                <a href="{{ action('CabinetTagController@getIndex', $object->id) }}"><span>Тэги</span></a>
+                <a href="{{ action('CabinetTagController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('tag') }}</span></a>
             </li>
 
             <li class="cab-menu__li cab-menu__li--news">
-                <a href="{{ action('CabinetNewsController@getIndex', $object->id) }}"><span>Новости</span></a>
+                <a href="{{ action('CabinetNewsController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('news') }}</span></a>
             </li>
 
             <li class="cab-menu__li cab-menu__li--news">
-                <a href="{{ action('CabinetEventController@getIndex', $object->id) }}"><span>События</span></a>
+                <a href="{{ action('CabinetEventController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('events') }}</span></a>
             </li>
             <li class="cab-menu__li cab-menu__li--news">
-                <a href="{{ action('CabinetCommentController@getIndex', $object->id) }}"><span>Отзывы</span></a>
+                <a href="{{ action('CabinetCommentController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('reviews') }}</span></a>
             </li>
             @if ($role->is_reserve)
                 <li class="cab-menu__li cab-menu__li--news">
-                    <a href="{{ action('CabinetReserveController@getIndex', $object->id) }}"><span>Бронирование</span></a>
+                    <a href="{{ action('CabinetReserveController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('bron') }}</span></a>
                 </li>
             @endif
             <li class="cab-menu__li cab-menu__li--news">
-                <a href="{{ action('CabinetMapController@getIndex', $object->id) }}"><span>Карта</span></a>
+                <a href="{{ action('CabinetMapController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('map') }}</span></a>
             </li>
             <li class="cab-menu__li cab-menu__li--add">
-                <a href="{{ action('TicketController@postNewRole') }}"><span>Добавить заведение</span></a>
+                <a href="{{ action('TicketController@postNewRole') }}"><span>{{ $translator->getTransNameByKey('add_zaved_href') }}</span></a>
             </li>
         </ul>
         <div class="header-bot header-bot--cab">
             <div class="header-bot__inner">
                 <a href="{{ action('TicketController@getIndex') }}" class="but but-support">
-                    Обратная связь с тех.поддержкой
+                    {{ $translator->getTransNameByKey('ticket_href') }}
                 </a>
             </div>
         </div>

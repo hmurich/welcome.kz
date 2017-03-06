@@ -30,7 +30,7 @@
                 <div class="zaved-middle__left">
                     <div class="middle-info">
                         <div class="rating">
-                            <span class="rating__text">Рейтинг:</span>
+                            <span class="rating__text">{{ $translator->getTransNameByKey('raiting') }}:</span>
                             <ul class="stars">
                                 <li></li>
                                 <li></li>
@@ -45,15 +45,15 @@
                             </div>
                         </div>
                         <div class="views">
-                            <span>Просмотров:</span>
-                            {{ $object->view_total }} человек
+                            <span>{{ $translator->getTransNameByKey('wathc') }}:</span>
+                            {{ $object->view_total }} {{ $translator->getTransNameByKey('people') }}
                         </div>
-                        <a class="but middle-info__but" href="#">Показать на карте</a>
+                        <a class="but middle-info__but" href="#">{{ $translator->getTransNameByKey('show_on_map') }}</a>
                     </div>
                 </div>
                 @if ($role->is_reserve)
                     <div class="zaved-middle__right">
-                        <a class="but" href="#">Забронировать</a>
+                        <a class="but" href="#">{{ $translator->getTransNameByKey('bron_button') }}</a>
                     </div>
                 @endif
             </div>
@@ -61,16 +61,16 @@
                 <div class="zaved-content__left">
                     <div class="zaved-info">
                         <ul class="spisok">
-                            <li><span>Наименование:</span>{{ $object->name }}</li>
+                            <li><span>{{ $translator->getTransNameByKey('zaved_title') }}:</span>{{ $object->name }}</li>
                             @if ($standart_data)
-                                <li><span>Слоган:</span>{{ $standart_data->slogan }}</li>
-                                <li><span>Адрес:</span>{{ $standart_data->address }}</li>
-                                <li><span>Телефоны:</span>{{ $standart_data->phone }}</li>
+                                <li><span>{{ $translator->getTransNameByKey('zaved_slogan') }}:</span>{{ $standart_data->slogan }}</li>
+                                <li><span>{{ $translator->getTransNameByKey('zaved_address') }}:</span>{{ $standart_data->address }}</li>
+                                <li><span>{{ $translator->getTransNameByKey('zaved_phone') }}:</span>{{ $standart_data->phone }}</li>
                             @endif
 
                             @if ($special_data)
                                 @foreach ($special_data as $s)
-                                    <li><span>{{ $s->filter_name }}:</span> {{ implode(",", $s->getVal()) }}</li>
+                                    <li><span>{{ $translator->getTransNameByKey(SysFilter::getTransKey($s->filter_id)) }}:</span> {{ implode(", ", $s->getVal()) }}</li>
                                 @endforeach
                             @endif
                         </ul>

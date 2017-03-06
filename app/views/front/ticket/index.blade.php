@@ -3,8 +3,8 @@
 <div class="main-part__inner">
 	<div class="content-part">
 		<span class="h-heading">{{ $title }}</span>
-		<a class="but" href="{{ action('TicketController@getAdd') }}">Добавить новость</a>
-        <a class="but" href="{{ action('CabinetController@getIndex') }}" style='float: right;'>В кабинет</a>
+		<a class="but" href="{{ action('TicketController@getAdd') }}">{{ $translator->getTransNameByKey('add_ticket'); }} </a>
+        <a class="but" href="{{ action('CabinetController@getIndex') }}" style='float: right;'>{{ $translator->getTransNameByKey('back_to_cabinet'); }} </a>
 		<ul class="ncab-ul">
             @foreach($items as $i)
                 <li>
@@ -17,7 +17,7 @@
 								{{ $ar_cats[$i->cat_id] }}
 							</span>
                             <a href='{{ action('TicketController@getHistory', $i->id) }}' class='ncab-up__edit ncab-up__edit--delete'>
-                                История
+                                {{ $translator->getTransNameByKey('history_cabinet'); }}
                             </a>
                         </div>
                         <span>{{ $i->title }}</span>

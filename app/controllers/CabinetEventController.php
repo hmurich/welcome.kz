@@ -11,13 +11,15 @@ class CabinetEventController extends PublicController {
         $events = ObjectEvent::whereIn('object_id', $ar_objects)->with('relObject')->orderBy('id', 'desc')->get();
 
         $ar = array();
-        $ar['title'] = 'События';
+        $ar['title'] = $this->translator->getTransNameByKey('events');
         $ar['object'] = $object;
 
         $ar['events'] = $events;
 
         $ar['role'] = $object->relRole;
         $ar['ar_role'] = SysCompanyRole::lists('name', 'id');
+
+        $ar['translator'] = $this->translator;
 
         return View::make('front.cabinet.event.index', $ar);
     }

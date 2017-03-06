@@ -10,13 +10,15 @@ class CabinetReserveController extends PublicController {
         $other_objects = Object::where('company_id', $company->id)->lists('role_id', 'id');
 
         $ar = array();
-        $ar['title'] = 'Бронирование';
+        $ar['title'] = $this->translator->getTransNameByKey('bron');
         $ar['object'] = $object;
         $ar['other_objects'] = $other_objects;
         $ar['reserves'] = Reserve::where('object_id', $object->id)->orderBy('id', 'desc')->get();
 
         $ar['role'] = $object->relRole;
         $ar['ar_role'] = SysCompanyRole::lists('name', 'id');
+
+        $ar['translator'] = $this->translator;
 
         return View::make('front.cabinet.reserve.index', $ar);
     }
@@ -31,7 +33,7 @@ class CabinetReserveController extends PublicController {
         $object->is_reserve = ($object->is_reserve ? 0 : 1);
         $object->save();
 
-        return Redirect::back()->with('success', 'Данные успешна сохранены');
+        return Redirect::back()->with('success', $this->translator->getTransNameByKey('bron_data_save_msg'));
     }
 
     function getAccept($object_id, $reserve_id){
@@ -48,6 +50,6 @@ class CabinetReserveController extends PublicController {
         $reserve->is_accept = ($reserve->is_accept ? 0 : 1);
         $reserve->save();
 
-        return Redirect::back()->with('success', 'Данные успешна сохранены');
+        return Redirect::back()->with('success', $this->translator->getTransNameByKey('bron_data_save_msg'));
     }
 }

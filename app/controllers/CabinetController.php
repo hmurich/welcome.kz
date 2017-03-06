@@ -8,12 +8,12 @@ class CabinetController extends PublicController {
         else
             $object = Object::where(array('company_id'=>$company->id, 'id'=>$object_id))->first();
         if (!$object)
-            return Redirect::action('TicketController@getIndex')->with('info', 'У Вас нет октрытых организаций/ролей');
+            return Redirect::action('TicketController@getIndex')->with('info', $this->translator->getTransNameByKey('you_note_have_open_role'));
 
         $other_objects = Object::where('company_id', $company->id)->lists('role_id', 'id');
 
         $ar = array();
-        $ar['title'] = 'Личный кабинет';
+        $ar['title'] = $this->translator->getTransNameByKey('personal_cabinet');
         $ar['object'] = $object;
         $ar['other_objects'] = $other_objects;
         $ar['standart_data'] = $object->relStandartData;
@@ -30,6 +30,7 @@ class CabinetController extends PublicController {
 
         $ar['ar_role'] = SysCompanyRole::lists('name', 'id');
 
+        $ar['translator'] = $this->translator;
 
         return View::make('front.cabinet.index', $ar);
     }
@@ -65,7 +66,7 @@ class CabinetController extends PublicController {
             return App::abort(404);
 
         if (!$object->is_active)
-            return Redirect::back()->with('error', 'Ваша организация еще не одобрена модератором');
+            return Redirect::back()->with('error', $this->translator->getTransNameByKey('you_role_note_approve'));
 
         $object->is_open = ($object->is_open ? 0 : 1);
         $object->save();

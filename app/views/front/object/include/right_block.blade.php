@@ -13,7 +13,7 @@
     						<ul class="info-ul">
                                 @foreach ($s->relSpecialData()->where('show_filter', 1)->get() as $i)
                                     <li>
-        								<span>{{ $i->filter_name }}:</span> {{ implode(", ", $i->getVal()) }}
+        								<span>{{ $translator->getTransNameByKey(SysFilter::getTransKey($i->filter_id)) }}:</span> {{ implode(", ", $i->getVal()) }}
         							</li>
                                 @endforeach
     						</ul>

@@ -16,13 +16,13 @@
 			<div class="edit-parts">
 				<div class="edit-row">
 					<label class="edit-row__label" for="lng">
-						Ширина:
+						{{ $translator->getTransNameByKey('lng_title'); }}:
 					</label>
 					<input class="edit-row__input" id="lng" name='lng' type="text" value="{{ $map->lng }}" required="">
 				</div>
 				<div class="edit-row">
 					<label class="edit-row__label" for="lat">
-						Долгота:
+						{{ $translator->getTransNameByKey('lat_title'); }}:
 					</label>
 					<input class="edit-row__input" id="lat" name='lat' type="text"  value="{{ $map->lat }}" required="">
 				</div>
@@ -31,7 +31,7 @@
                 </div>
 
 			</div>
-			<button class="but" type="submit">Сохранить</button>
+			<button class="but" type="submit">{{ $translator->getTransNameByKey('map_save'); }}</button>
             {{ Form::close() }}
 		</div>
 	</div>

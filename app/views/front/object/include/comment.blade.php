@@ -6,7 +6,7 @@
                     <span class="otzyv-up__name">{{ $c->title }}</span>
                     <span class="otzyv-up__date">{{ $c->created_at }}</span>
                     <div class="rating otzyv-up__rating">
-                        <span class="rating__text">Рейтинг:</span>
+                        <span class="rating__text">{{ $translator->getTransNameByKey('Рейтинг') }}:</span>
                         <ul class="stars">
                             {{ ModelSnipet::generateStar($c->score) }}
                         </ul>

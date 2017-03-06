@@ -10,7 +10,7 @@ class CabinetTagController extends PublicController {
         $other_objects = Object::where('company_id', $company->id)->lists('role_id', 'id');
 
         $ar = array();
-        $ar['title'] = 'Тэги';
+        $ar['title'] = $this->translator->getTransNameByKey('tag');
         $ar['object'] = $object;
         $ar['other_objects'] = $other_objects;
         $ar['news'] = News::where('object_id', $object->id)->orderBy('id', 'desc')->take(6)->get();
@@ -18,6 +18,8 @@ class CabinetTagController extends PublicController {
 
         $ar['role'] = $object->relRole;
         $ar['ar_role'] = SysCompanyRole::lists('name', 'id');
+
+        $ar['translator'] = $this->translator;
 
         return View::make('front.cabinet.tag.index', $ar);
     }
@@ -29,12 +31,10 @@ class CabinetTagController extends PublicController {
         if (!$object)
             return App::abort(404);
 
-        //echo Input::get('note'); exit();
-
         $tag = $object->relTag;
         $tag->note = Input::get('note');
         $tag->save();
 
-        return Redirect::back()->with('success', 'Данные успешно сохранены');
+        return Redirect::back()->with('success', $this->translator->getTransNameByKey('tag_save_msg'));
     }
 }

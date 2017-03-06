@@ -21,7 +21,7 @@
                         </li>
                     </ul>
                     <a class="where" href="{{ action('EventController@getIndex') }}">
-                        Куда сходить?
+                        {{ $translator->getTransNameByKey('where_go') }}
                     </a>
                 </div>
                 <div class="lang">
@@ -42,13 +42,13 @@
                     <div class="search-part">
                     	<input class="search-part__input js_send_search_value" type="text" placeholder="Я ищу..." name='search'>
                    		<input class="search-part__submit" type="submit">
-                   	</div>	
+                   	</div>
                 </form>
                 <span class="main-search__text">
-                    Гостиница, хостел, отель, ресторан, кафе, фаст-фуд, доставка ЕДЫ ...
+                    {{ $translator->getTransNameByKey('find_slogan') }}
                 </span>
             </div>
-            <a class="cabinet" href="{{ action('CabinetController@getIndex') }}">Личный кабинет</a>
+            <a class="cabinet" href="{{ action('CabinetController@getIndex') }}">{{ $translator->getTransNameByKey('personal_cabinet') }}</a>
         </div>
     </div>
 </div>

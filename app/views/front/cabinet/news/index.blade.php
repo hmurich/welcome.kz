@@ -7,7 +7,7 @@
 		<div class="content-part">
 			<div class="up-heading">
                 <span class="up-heading__heading">{{ $title }}</span>
-			    <a class="but" href="{{ action('CabinetNewsController@getAdd', $object->id) }}">Добавить новость</a>
+			    <a class="but" href="{{ action('CabinetNewsController@getAdd', $object->id) }}">{{ $translator->getTransNameByKey('add_news') }}</a>
             </div>
 			<ul class="ncab-ul">
                 @foreach ($news as $n)
@@ -21,10 +21,10 @@
                                     {{ $n->title }}
                                 </a>
                                 <a href='{{ action("CabinetNewsController@getAdd", array($object->id, $n->id)) }}' class="ncab-up__edit ncab-up__edit--edit">
-                                    Редактировать новость
+                                    {{ $translator->getTransNameByKey('edit_news') }}
                                 </a>
                                 <a href='{{ action("CabinetNewsController@getDelete", array($object->id, $n->id)) }}' class="ncab-up__edit ncab-up__edit--delete">
-                                    Удалить новость
+                                    {{ $translator->getTransNameByKey('del_news') }} 
                                 </a>
                             </div>
                             {{ $n->note }}

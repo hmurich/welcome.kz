@@ -6,10 +6,10 @@ class TicketController extends PublicController {
         $objects = $company->relObjects;
         $tickets = Ticket::where('user_id', $user->id)->get();
         if (!$company->relObjects()->count())
-            return Redirect::action('TicketController@getNewRole')->with('info', 'Для доступа в кабинет, нужна хотя бы одна организация');
+            return Redirect::action('TicketController@getNewRole')->with('info', $this->translator->getTransNameByKey('acces_cabinet_denied'));
 
         $ar = array();
-        $ar['title'] = 'Ваши заявки';
+        $ar['title'] = $this->translator->getTransNameByKey('ticket_index_title');
         $ar['items'] = Ticket::where('user_id', $user->id)
                                 ->orderBy('id', 'desc')->get();
         $ar['ar_cats'] = Ticket::getTopicAr();
@@ -24,7 +24,7 @@ class TicketController extends PublicController {
         $user = Auth::user();
 
         $ar = array();
-        $ar['title'] = 'Подача новой заявки';
+        $ar['title'] = $this->translator->getTransNameByKey('ticket_add_title');
         $ar['ar_cats'] = Ticket::getTopicAr();
 
         if (isset($ar['ar_cats'][Ticket::new_role_cat_id]))
@@ -48,7 +48,7 @@ class TicketController extends PublicController {
         $ticket->user_id = $user->id;
         $ticket->save();
 
-        return Redirect::action('TicketController@getIndex')->with('success', 'Ваша заявка на принята');
+        return Redirect::action('TicketController@getIndex')->with('success', $this->translator->getTransNameByKey('ticket_add_true_msg'));
     }
 
     function getHistory($ticket_id){
@@ -60,7 +60,7 @@ class TicketController extends PublicController {
         $answers = TicketAnswer::where('ticket_id', $ticket->id)->orderBy('id', 'desc')->get();
 
         $ar = array();
-        $ar['title'] = 'История заявки "'.$ticket->title.'"';
+        $ar['title'] = $this->translator->getTransNameByKey('ticket_history_title').' "'.$ticket->title.'"';
         $ar['ar_status'] = Ticket::getStatusAr();
         $ar['ticket'] = $ticket;
         $ar['items'] = $answers;
@@ -76,7 +76,7 @@ class TicketController extends PublicController {
         $user_roles = $company->relObjects()->lists('role_id');
 
         $ar = array();
-        $ar['title'] = 'Форма получения новой организации';
+        $ar['title'] = $this->translator->getTransNameByKey('ticket_new_role_title');
         $ar['ar_roles'] = SysCompanyRole::lists('name', 'id');
         $ar['company'] = $company;
 
@@ -89,7 +89,7 @@ class TicketController extends PublicController {
 
     function postNewRole(){
         if (count(Input::get('role')) == 0)
-            return Redirect::back()->with('error', 'Нужно указать хотя бы одну роль');
+            return Redirect::back()->with('error',  $this->translator->getTransNameByKey('need_role_msg'));
 
         $user = Auth::user();
         $company = $user->relCompany;
@@ -116,7 +116,7 @@ class TicketController extends PublicController {
 
         DB::commit();
 
-        return Redirect::action('CabinetController@getIndex')->with('success', 'Ваша заявка на получение новой роли принята');
+        return Redirect::action('CabinetController@getIndex')->with('success', $this->translator->getTransNameByKey('need_role_success_msg'));
     }
 
     function getNewEvent($object_id){
@@ -126,7 +126,7 @@ class TicketController extends PublicController {
         $object = $company->relObjects()->where('id', $object_id)->first();
 
         $ar = array();
-        $ar['title'] = 'Форма добавление нового события';
+        $ar['title'] = $this->translator->getTransNameByKey('ticket_new_event_title');
         $ar['company'] = $company;
 
         $ar['objects'] = $objects;
@@ -155,16 +155,14 @@ class TicketController extends PublicController {
         if (Input::hasFile('image'))
             $data['image_link'] = ModelSnipet::setImage(Input::file('image'), 'logo', 400, 230);
 
-        echo '<pre>'; print_r($data); echo '</pre>';
         $event = ObjectEvent::generateNew($object, $data);
         if (!$event){
             DB::rollback();
-            echo 'asdasd'; exit();
         }
 
         DB::commit();
 
-        return Redirect::action('CabinetEventController@getIndex', $event->object_id)->with('success', 'Ваша заявка на получение нового события принята');
+        return Redirect::action('CabinetEventController@getIndex', $event->object_id)->with('success', $this->translator->getTransNameByKey('ticket_new_event_msg'));
     }
 
 }

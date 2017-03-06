@@ -10,12 +10,12 @@
 			<div class="edit-parts">
 				<div class="edit-textarea">
 					<label class="edit-textarea__label" for="">
-						Тэги:
+						{{ $translator->getTransNameByKey('tag_note_title') }}:
 					</label>
-					<textarea class="edit-textarea__textarea" id="note" name='note' type="text" placeholder="Введите тэги через запятую">{{ $tag->note }}</textarea>
+					<textarea class="edit-textarea__textarea" id="note" name='note' type="text" placeholder="{{ $translator->getTransNameByKey('tag_note_placeholder') }}">{{ $tag->note }}</textarea>
 				</div>
 			</div>
-			<button class="but" type="submit">Сохранить</button>
+			<button class="but" type="submit">{{ $translator->getTransNameByKey('tag_send') }}</button>
             {{ Form::close() }}
 		</div>
 	</div>

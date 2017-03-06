@@ -13,7 +13,7 @@
                     @endforeach
                 </select>
     			<select class="header-options__select" >
-    				<option selected="true"  name='role_id'>Выберите тип</option>
+    				<option selected="true"  name='role_id'>{{ $translator->getTransNameByKey('select_role'); }}</option>
                     @foreach ($ar_role as $id => $name))
                         <option value='{{ $id }}' {{ (Input::get('role_id') == $id ? 'selected' : null) }}>
                             {{ $translator->getTransNameByKey(SysCompanyRole::getTransKey($id), $name); }}
@@ -24,7 +24,9 @@
 
             {{ Form::close() }}
 
-			<span class="show-filtr">Открыть фильтр</span>
+			<span class="show-filtr" data-close='{{ $translator->getTransNameByKey('close_filter'); }}' data-open='{{ $translator->getTransNameByKey('open_filter'); }}'>
+				{{ $translator->getTransNameByKey('open_filter'); }}
+			</span>
 		</div>
 		<ul class="zaved-ul">
             @foreach ($items as $i)

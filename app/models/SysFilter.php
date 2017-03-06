@@ -4,6 +4,28 @@ class SysFilter extends Eloquent {
     protected $fillable = array('spec_key', 'name', 'type_id', 'is_many', 'is_fixed', 'sort_index');
     public $timestamps = false;
 
+	const trans_prefix = 'sys_filter_';
+
+	public static function boot() {
+		$res = parent::boot();
+		static::created(function($model){
+			$model->setNewTransKey();
+			return true;
+		});
+
+		return $res;
+	}
+
+	function setNewTransKey(){
+		$key = static::trans_prefix.$this->id;
+		TransKey::createNewWord($key, $this->name);
+	}
+
+	static function getTransKey($id){
+		return static::trans_prefix.$id;
+	}
+
+
     static function getFilterNameAr(){
         return array('spec_key'=>'text');
     }

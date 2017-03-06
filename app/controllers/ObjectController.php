@@ -1,5 +1,5 @@
 <?php
-class ObjectController extends BaseController {
+class ObjectController extends PublicController {
     function getIndex ($id) {
         $object = Object::findOrFail($id);
         if ( !(Auth::check()) || !in_array(Auth::user()->type_id, array(1, 2)) ){
@@ -13,7 +13,7 @@ class ObjectController extends BaseController {
         $other_objects = Object::where('company_id', $object->company_id)->where(array('is_active'=>1, 'is_open'=>1))->lists('role_id', 'id');
 
         $ar = array();
-        $ar['title'] = 'Просмотр "'.$object->name.'"';
+        $ar['title'] = $object->name;
         $ar['object'] = $object;
         $ar['other_objects'] = $other_objects;
         $ar['standart_data'] = $object->relStandartData;
@@ -44,6 +44,8 @@ class ObjectController extends BaseController {
                                     ->where('is_publish', 1)
                                     ->where('is_answer', 0)
                                     ->orderBy('id', 'desc')->take(100)->skip(3)->get();
+
+        $ar['translator'] = $this->translator;
 
         return View::make('front.object.index', $ar);
     }
@@ -107,7 +109,7 @@ class ObjectController extends BaseController {
         $reserve->enter_time = Input::get('enter_time');
         $reserve->save();
 
-        return Redirect::back()->with('success', 'Ваша бронь учтена');
+        return Redirect::back()->with('success', $this->translator->getTransNameByKey('success_bron'));
     }
 
     function getNews($object_id, $id){
@@ -154,7 +156,7 @@ class ObjectController extends BaseController {
         $user = Auth::user();
 
         if (Comment::where(array('object_id'=>$object->id, 'user_id'=>$user->id))->count() > 0)
-            return Redirect::back()->with('info', 'Вы уже оставили отзыв');
+            return Redirect::back()->with('info', $this->translator->getTransNameByKey('info_review_has'));
 
         $comment = new Comment();
         $comment->is_answer = 0;
@@ -180,7 +182,7 @@ class ObjectController extends BaseController {
         $score->score_avg = $score->score_sum / $score->score_count;
         $score->save();
 
-        return Redirect::back()->with('success', 'Ваш отзыв оставлен');
+        return Redirect::back()->with('success', $this->translator->getTransNameByKey('success_review') );
     }
 
 }

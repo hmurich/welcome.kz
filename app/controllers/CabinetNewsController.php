@@ -10,13 +10,15 @@ class CabinetNewsController extends PublicController {
         $other_objects = Object::where('company_id', $company->id)->lists('role_id', 'id');
 
         $ar = array();
-        $ar['title'] = 'Новости';
+        $ar['title'] = $this->translator->getTransNameByKey('news');
         $ar['object'] = $object;
         $ar['other_objects'] = $other_objects;
         $ar['news'] = News::where('object_id', $object->id)->orderBy('id', 'desc')->take(6)->get();
 
         $ar['role'] = $object->relRole;
         $ar['ar_role'] = SysCompanyRole::lists('name', 'id');
+
+        $ar['translator'] = $this->translator;
 
         return View::make('front.cabinet.news.index', $ar);
     }
@@ -37,15 +39,17 @@ class CabinetNewsController extends PublicController {
 
         $news = News::find($id);
         if ($news){
-            $ar['title'] = 'Редактирование "'.$news->title.'"';
+            $ar['title'] = $this->translator->getTransNameByKey('edit').' "'.$news->title.'"';
             $ar['news'] = $news;
             $ar['action'] = action("CabinetNewsController@postAdd", array($object->id, $news->id));
         }
         else {
-            $ar['title'] = 'Добавление новости';
+            $ar['title'] = $this->translator->getTransNameByKey('add_news');
             $ar['news'] = false;
             $ar['action'] = action("CabinetNewsController@postAdd", array($object->id));
         }
+
+        $ar['translator'] = $this->translator;
 
         return View::make('front.cabinet.news.add', $ar);
     }
@@ -71,7 +75,7 @@ class CabinetNewsController extends PublicController {
             $news->image = ModelSnipet::setImage(Input::file('image'), 'logo');
         $news->save();
 
-        return Redirect::action('CabinetNewsController@getIndex', $object->id)->with('success', 'Новость успешно сохранена');
+        return Redirect::action('CabinetNewsController@getIndex', $object->id)->with('success', $this->translator->getTransNameByKey('save_news_msg'));
     }
 
     function getDelete($object_id, $id){
@@ -83,7 +87,7 @@ class CabinetNewsController extends PublicController {
 
         News::where(array('object_id'=>$object->id, 'id'=>$id))->first()->delete();
 
-        return Redirect::back()->with('success', 'Новость успешно удалена');
+        return Redirect::back()->with('success', $this->translator->getTransNameByKey('save_news_del_msg'));
     }
 
 

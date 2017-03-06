@@ -10,24 +10,24 @@
 			<div class="edit-parts">
 				<div class="edit-row">
 					<label class="edit-row__label" for="title">
-						Заголовок:
+						{{ $translator->getTransNameByKey('news_title') }}:
 					</label>
-					<input class="edit-row__input" id="title" name='title' type="text" placeholder="Название заведения" value="{{ ($news ? $news->title : null) }}">
+					<input class="edit-row__input" id="title" name='title' type="text" placeholder="{{ $translator->getTransNameByKey('news_title') }}" value="{{ ($news ? $news->title : null) }}">
 				</div>
 				<div class="edit-row">
 					<label class="edit-row__label" for="image">
-						Фото:
+						{{ $translator->getTransNameByKey('news_photo') }}:
 					</label>
 					<input class="edit-row__input" id="image" name='image' type="file" required="">
 				</div>
 				<div class="edit-textarea">
 					<label class="edit-textarea__label" for="">
-						Текст новости:
+						{{ $translator->getTransNameByKey('news_note') }}:
 					</label>
-					<textarea class="edit-textarea__textarea" id="note" name='note' type="text" placeholder="Текст новости">{{ ($news ? $news->note : null) }}</textarea>
+					<textarea class="edit-textarea__textarea" id="note" name='note' type="text" placeholder="{{ $translator->getTransNameByKey('news_note') }}">{{ ($news ? $news->note : null) }}</textarea>
 				</div>
 			</div>
-			<button class="but" type="submit">Сохранить</button>
+			<button class="but" type="submit">{{ $translator->getTransNameByKey('news_send') }}</button>
             {{ Form::close() }}
 		</div>
 	</div>

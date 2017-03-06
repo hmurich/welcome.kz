@@ -12,7 +12,7 @@ class CabinetMapController extends PublicController {
             $map = ObjectLocation::create(array('object_id'=>$object->id));
 
         $ar = array();
-        $ar['title'] = 'Карта';
+        $ar['title'] = $this->translator->getTransNameByKey('map');
         $ar['object'] = $object;
         $ar['map'] = $map;
 
@@ -20,6 +20,8 @@ class CabinetMapController extends PublicController {
         $ar['ar_role'] = SysCompanyRole::lists('name', 'id');
 
         $ar['def_city'] = SysDirectoryName::findOrFail($object->city_id);
+
+        $ar['translator'] = $this->translator;
 
         return View::make('front.cabinet.map.index', $ar);
     }
@@ -38,6 +40,6 @@ class CabinetMapController extends PublicController {
         $map->lat = Input::get('lat');
         $map->save();
 
-        return Redirect::back()->with('success', 'Координаты успешно сохранены');
+        return Redirect::back()->with('success', $this->translator->getTransNameByKey('map_succes_msg'));
     }
 }

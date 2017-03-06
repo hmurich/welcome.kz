@@ -34,9 +34,9 @@ class EventController extends PublicController {
             $events = $events->where('date_event', date('Y-m-d'));
 
         $ar = array();
-        $ar['title'] = 'НЕ ЗНАЕТЕ КУДА ПОЙТИ?';
+        $ar['title'] = $this->translator->getTransNameByKey('event_title');
         $ar['events'] = $events->with('relObject')->orderBy('date_event', 'asc')->get();
-
+        
         $ar['cities'] = SysCity::getAr();
         $ar['city_id'] = SysCity::getCityID();
         $ar['ar_role'] = SysCompanyRole::orderBy('name', 'asc')->lists('name', 'id');

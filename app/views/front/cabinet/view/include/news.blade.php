@@ -10,7 +10,7 @@
                 <div class="news-text">
                     <a class="news-text__heading" href="#">{{ $n->title }}</a>
                     <p class="news-text__text">{{ $n->short_note }}</p>
-                    <a class="news-text__more" href='{{ action("CabinetController@getNews", array($n->object_id, $n->id)) }}'>Узнать подробнее...</a>
+                    <a class="news-text__more" href='{{ action("CabinetController@getNews", array($n->object_id, $n->id)) }}'>{{ $translator->getTransNameByKey('detail_href'); }}</a>
                 </div>
             </div>
         </li>
