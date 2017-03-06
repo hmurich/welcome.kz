@@ -16,6 +16,34 @@
 					<input class="edit-row__input" id="name" name='name' type="text" value='{{ $object->name }}'>
 				</div>
 				<div class="edit-row">
+					<label class="edit-row__label" for="city_id">
+						Город:
+					</label>
+					<select class="edit-row__input" name='city_id' required>
+				        @foreach ($ar_city as $k=>$v)
+				            @if ($k == $object->city_id)
+				                <option value="{{ $k }}" selected="selected">{{ $v }}</option>
+				            @else
+				                <option value="{{ $k }}">{{ $v }}</option>
+				            @endif
+				        @endforeach
+				    </select>
+				</div>
+				<div class="edit-row">
+					<label class="edit-row__label" for="name">
+						Время начала:
+					</label>
+					<input class="edit-row__input" id="begin_time" name='begin_time' type="time" value='{{ $standart_data->begin_time }}'>
+				</div>
+				<div class="edit-row">
+					<label class="edit-row__label" for="name">
+						Время конца:
+					</label>
+					<input class="edit-row__input" id="end_time" name='end_time' type="time" value='{{ $standart_data->end_time }}'>
+				</div>
+
+
+				<div class="edit-row">
 					<label class="edit-row__label" for="slogan">
 						Слоган:
 					</label>
@@ -41,6 +69,13 @@
 						@include('front.cabinet.field.include.special_field')
 					</div>
 				@endforeach
+				<div class="edit-row">
+					<label class="edit-row__label" for="phone">
+						Описание:
+					</label>
+					<textarea class='edit-row__input' name='note'>{{ $standart_data->note }}</textarea>
+				</div>
+
 			</div>
 			<span class="edit-heading">Фоторафии</span>
 			<div class="edit-parts">

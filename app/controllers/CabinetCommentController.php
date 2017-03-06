@@ -23,6 +23,8 @@ class CabinetCommentController extends PublicController {
     }
 
     function getIsPublish ($object_id, $comment_id) {
+        return Redirect::back()->with('success', 'Данные сохранены успешна');
+        
         $user = Auth::user();
         $company = $user->relCompany;
         $ar_objects = $company->relObjects()->lists('id');

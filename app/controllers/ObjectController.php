@@ -35,10 +35,15 @@ class ObjectController extends BaseController {
                                         ->with('relLocation', 'relStandartData', 'relSpecialData')
                                         ->orderBy('sort_index', 'desc')->take(12)->get();
 
+        $ar['comments_first'] = Comment::where('object_id', $object->id)
+                                    ->where('is_publish', 1)
+                                    ->where('is_answer', 0)
+                                    ->orderBy('id', 'desc')->take(3)->get();
+
         $ar['comments'] = Comment::where('object_id', $object->id)
                                     ->where('is_publish', 1)
                                     ->where('is_answer', 0)
-                                    ->orderBy('id', 'desc')->get();
+                                    ->orderBy('id', 'desc')->take(100)->skip(3)->get();
 
         return View::make('front.object.index', $ar);
     }
@@ -154,7 +159,7 @@ class ObjectController extends BaseController {
         $comment = new Comment();
         $comment->is_answer = 0;
         $comment->parent_id = 0;
-        $comment->is_publish = 0;
+        $comment->is_publish = 1;
         $comment->object_id = $object->id;
         $comment->user_id = $user->id;
         $comment->title = Input::get('title');

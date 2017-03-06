@@ -13,15 +13,6 @@
                             <div class="otzyv-up">
                                 <span class="otzyv-up__name">{{ $c->title }}</span>
                                 <span class="otzyv-up__date">{{ $c->created_at }}</span>
-                                <div class="rating otzyv-up__rating">
-                                    <a href='{{ action("CabinetCommentController@getIsPublish", array($object->id, $c->id)) }}' class="rating__text">
-                                        @if ($c->is_publish)
-                                            Скрыть
-                                        @else
-                                            Опубликовать
-                                        @endif
-                                    </a>
-                                </div>
                             </div>
                             <span class="otzyv__text">
                                 {{ $c->note }}

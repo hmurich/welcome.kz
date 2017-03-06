@@ -2,6 +2,15 @@
 	<div class="header__inner">
 		<span class="header-option">{{ $cat->name }}</span>
 		<div class="header-options">
+			<select class="header-options__select  js_change_city" data-reload='1'>
+	            <option selected="true" disabled>{{ $translator->getTransNameByKey('select_city', 'Выберите город'); }}</option>
+	            @foreach ($cities as $id => $name))
+	                <option value='{{ $id }}' {{ ($city_id == $id ? 'selected' : null) }}>
+	                    {{ $translator->getTransNameByKey(SysDirectoryName::getTransKey($id), $name); }}
+	                </option>
+	            @endforeach
+	        </select>
+
 
 			<select class="header-options__select js_map_field" data-type='main' data-id='role_id'>
 				<option selected="true" >Выберите тип</option>
@@ -20,7 +29,7 @@
                 @include('front.map.include.filter_field', array('f'=>$fltr))
             @endforeach
 
-			<span class="show-filtr">Открыть фильтр</span>
+			<span class="show-filtr"  data-close='Закрыть фильтр' data-open='Открыть фильтр'>Открыть фильтр</span>
 		</div>
 		<ul class="zaved-ul js_object_list">
 

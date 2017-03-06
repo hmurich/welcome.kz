@@ -15,6 +15,7 @@ function init()
         balloonMaxWidth: 300
     });
 
+
     lng = jQuery("#lng").val();
     lat = jQuery("#lat").val();
     myPlacemark = new ymaps.Placemark([lng, lat]);
@@ -35,7 +36,22 @@ function init()
     });
 
 
-    myMap.controls.add("searchControl");
+    var search = new ymaps.control.SearchControl({noPlacemark:true});
+    myMap.controls.add(search);
+    search.events.add("resultselect", function (result){
+        var coords = search.getResultsArray()[result.get('resultIndex')].geometry.getCoordinates();
+
+        myMap.geoObjects.remove(myPlacemark);
+
+        myPlacemark = new ymaps.Placemark([coords[0].toPrecision(10), coords[1].toPrecision(10)]);
+        myMap.geoObjects.add(myPlacemark);
+
+        jQuery("#lng").val(coords[0].toPrecision(10));
+        jQuery("#lat").val(coords[1].toPrecision(10));
+        console.log("Координаты: " + [coords[0].toPrecision(10),coords[1].toPrecision(10)].join("; "));
+    });
+
+
     myMap.controls.add("zoomControl");
     myMap.controls.add("mapTools");
     myMap.controls.add("typeSelector");

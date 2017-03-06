@@ -77,7 +77,7 @@ class TicketController extends PublicController {
 
         $ar = array();
         $ar['title'] = 'Форма получения новой организации';
-        $ar['ar_roles'] = SysCompanyRole::whereNotIn('id', $user_roles)->lists('name', 'id');
+        $ar['ar_roles'] = SysCompanyRole::lists('name', 'id');
         $ar['company'] = $company;
 
         $ar['ar_city'] = SysCity::getAr();

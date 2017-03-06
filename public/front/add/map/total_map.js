@@ -17,7 +17,7 @@ function init()
 
     jQuery(".js_map_field").change(changeField);
 
-    myMap.controls.add("searchControl");
+
     myMap.controls.add("zoomControl");
     myMap.controls.add("mapTools");
     myMap.controls.add("typeSelector");
@@ -60,7 +60,9 @@ function init()
             console.log('recive data data');
             console.log(data);
             addGeoObjets(data.geo);
-            addToList(data.items);
+            addToList(data.items, 1);
+            addToList(data.vip, 2);
+            addToList(data.specail, 3);
         });
     }
 
@@ -84,11 +86,21 @@ function init()
         myMap.geoObjects.add(myCollection);
     }
 
-    function addToList(list_item){
-        jQuery('.js_object_list').empty();
+    function addToList(list_item, type = 1){
+        if (type == 1)
+            jQuery('.js_object_list').empty();
         jQuery.each(list_item, function( key, value ) {
-            var element = '<li>'
-                                + '<a class="mini-zaved" href="/show/index/'+value.id+'">'
+            console.log('type ' + type);
+
+            var element = '';
+            if (type == 2)
+                element = '<li  class="js_object_list_li js_object_list_li_vip">';
+            else if (type == 3)
+                element = '<li class="js_object_list_li js_object_list_li_specail">';
+            else
+                element = '<li class="js_object_list_li ">';
+
+            element = element   + '<a class="mini-zaved" href="/show/index/'+value.id+'">'
                                     + '<img class="mini-zaved__img" src="'+value.logo+'" style="max-width: 80px; margin-right: 5px;">'
                                     + '<div class="info-zaved">'
                                         + '<span class="info-zaved__heading">'+value.name+'</span>'
@@ -107,7 +119,12 @@ function init()
                                     + '</div>'
                                 + '</a>'
                             + '</li>';
-            jQuery('.js_object_list').append(element);
+            if (type == 2 && jQuery( ".js_object_list .js_object_list_li:eq(1)" ).length > 0)
+                jQuery( ".js_object_list .js_object_list_li:eq(1)" ).after(element);
+            else if (type == 3 && jQuery( ".js_object_list .js_object_list_li:eq(3)" ).length > 0)
+                jQuery( ".js_object_list .js_object_list_li:eq(3)" ).after(element);
+            else
+                jQuery('.js_object_list').append(element);
         });
 
     }

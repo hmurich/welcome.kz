@@ -1,4 +1,10 @@
 @extends('front.layout')
+@section('js')
+	@parent
+	{{ HTML::script('//api-maps.yandex.ru/2.0/?load=package.standard&lang=ru-RU') }}
+    {{ HTML::script('front/add/map/object_map.js') }}
+@endsection
+
 @section('content')
 
 @include('front.object.include.right_block')
@@ -11,7 +17,7 @@
                     @if ($standart_data && $standart_data->logo)
                         <img src="{{ $standart_data->logo }}" style='width: 100%;' />
                     @else
-                        <img src="/front/img/zaved-edit.jpg"  style='width: 100%;' />
+                        <img src="/front/img/empty_logo.png"  style='width: 100%;' />
                     @endif
                 </span>
                 <div class="upzaved-text">
@@ -56,7 +62,13 @@
                             <span>Просмотров:</span>
                             {{ $object->view_total }} человек
                         </div>
-                        <a class="but middle-info__but" href="#">Показать на карте</a>
+                        @if ($object->relTaxi)
+                            <div class="views">
+                                <span>Такси:</span>
+                                <a href="tel:{{ $object->relTaxi->phone }}"> {{ $object->relTaxi->phone }}</a>
+                            </div>
+                        @endif
+                        <a class="but middle-info__but" href="#map">Показать на карте</a>
                     </div>
                 </div>
                 @if ($role->is_reserve && $object->is_reserve)
@@ -83,11 +95,21 @@
                             @endif
                         </ul>
 
-                        @include('front.object.include.comment')
+                        @include('front.object.include.add_comment')
                     </div>
                 </div>
                 <div class="zaved-content__right">
                     @include('front.object.include.news')
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="zaved-map js_map_field_main map" id='map' data-lng='{{ $location->lng }}' data-lat='{{ $location->lat }}'></div>
+
+                <div class="clear"></div>
+                <br /><br />
+                <div class="zaved-info">
+                    @include('front.object.include.comment')
                 </div>
             </div>
         </div>

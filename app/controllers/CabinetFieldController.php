@@ -29,6 +29,8 @@ class CabinetFieldController extends PublicController {
 
         $ar['sys_special_data'] = SysFilterRole::where('role_id', $object->role_id)->with('relFilter')->orderBy('sort_index', 'asc')->get();
 
+        $ar['ar_city'] = SysCity::getAr();
+
         return View::make('front.cabinet.field.index', $ar);
     }
 
@@ -45,7 +47,7 @@ class CabinetFieldController extends PublicController {
         $ar_names = SysFilterName::lists('name', 'id');
 
         DB::beginTransaction();
-
+        $object->city_id = Input::get('city_id');
         $object->name = Input::get('name');
         $object->save();
 
@@ -53,6 +55,10 @@ class CabinetFieldController extends PublicController {
         $standart_data->address = Input::get('address');
         $standart_data->slogan = Input::get('slogan');
         $standart_data->phone = Input::get('phone');
+        $standart_data->note = Input::get('note');
+        $standart_data->begin_time = Input::get('begin_time');
+        $standart_data->end_time = Input::get('end_time');
+
         if (Input::hasFile('logo'))
             $standart_data->logo = ModelSnipet::setImage(Input::file('logo'), 'logo', 150, 100);
         $standart_data->save();

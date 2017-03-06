@@ -15,7 +15,6 @@ function init()
         balloonMaxWidth: 300
     });
 
-    myMap.controls.add("searchControl");
     myMap.controls.add("zoomControl");
     myMap.controls.add("mapTools");
     myMap.controls.add("typeSelector");

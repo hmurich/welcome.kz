@@ -21,7 +21,10 @@ $(document).ready(function() {
     // функция смены города
     if (($(".js_change_city").length > 0)){
         $(".js_change_city").change(function(){
+            var reloader = $(this).data('reload');
             $.post("/city/ajax-change", {city_id:$(this).val()}).done(function( data ) {
+                if (reloader == '1')
+                    location.reload();
                 console.log(data);
             });
         });

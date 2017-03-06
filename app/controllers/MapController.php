@@ -87,35 +87,45 @@ class MapController extends PublicController {
         }
 
         $items = array();
+        $vip = array();
+        $specail = array();
+
         foreach($filters as $f){
-
-
-            $ar = array();
-            $ar['id'] = $f->id;
-            $ar['name'] = $f->name;
-
-			$first_image = $f->relSliders()->first();
-			if ($first_image)
-				$ar['logo'] = $first_image->image;
-			else
-				$ar['logo'] = $f->relStandartData->logo;
-
-            $ar['time_begin'] = $f->relStandartData->begin_time;
-            $ar['time_end'] = $f->relStandartData->end_time;
-
-            $options = array();
-
-            $fields =  $f->relSpecialData()->where('show_filter', 1)->get();
-            foreach ($fields as $i) {
-                $options[$i->filter_name] = implode(", ", $i->getVal());
-            }
-
-            $ar['options'] = $options;
-
-            $items[] = $ar;
+            if ($f->is_vip)
+                $vip[] = $this->generateRow($f);
+            else if ($f->is_special)
+                $specail[] = $this->generateRow($f);
+            else
+                $items[] = $this->generateRow($f);
         }
 
-        echo json_encode(array('geo'=>$geo, 'items'=>$items));
+        echo json_encode(array('geo'=>$geo, 'items'=>$items, 'vip'=>$vip, 'specail'=>$specail));
+    }
+
+    function generateRow($f){
+        $ar = array();
+        $ar['id'] = $f->id;
+        $ar['name'] = $f->name;
+
+        $first_image = $f->relSliders()->first();
+        if ($first_image)
+            $ar['logo'] = $first_image->image;
+        else
+            $ar['logo'] = $f->relStandartData->logo;
+
+        $ar['time_begin'] = $f->relStandartData->begin_time;
+        $ar['time_end'] = $f->relStandartData->end_time;
+
+        $options = array();
+
+        $fields =  $f->relSpecialData()->where('show_filter', 1)->get();
+        foreach ($fields as $i) {
+            $options[$i->filter_name] = implode(", ", $i->getVal());
+        }
+
+        $ar['options'] = $options;
+
+        return $ar;
     }
 
 
