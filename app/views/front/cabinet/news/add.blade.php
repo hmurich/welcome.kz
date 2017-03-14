@@ -6,7 +6,14 @@
 	<div class="main-part__inner">
 		<div class="content-part">
             {{ Form::open(array('url'=>$action, 'method' => 'post', 'files'=> true)) }}
-			<span class="h-heading">{{ $title }}</span>
+			<div class="up-heading">
+        <div class="mob-start mob-start--news">
+            <span></span>
+            <span></span>
+            <span></span>     
+        </div>
+				<span class="h-heading">{{ $title }}</span>
+			</div>		
 			<div class="edit-parts">
 				<div class="edit-row">
 					<label class="edit-row__label" for="title">

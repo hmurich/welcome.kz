@@ -5,7 +5,14 @@
 <div class="main-part">
 	<div class="main-part__inner">
 		<div class="content-part">
-			<span class="h-heading">{{ $title }}</span>
+			<div class="zaved-up">
+                <div class="mob-start mob-start--add">
+                    <span></span>
+                    <span></span>
+                    <span></span>     
+                </div>
+                <span class="h-heading">{{ $title }}</span>
+            </div>    
             <ul class="otzyv-ul">
                 @foreach ($comments as $c)
                     <li>

@@ -3,11 +3,18 @@
 
 @include('front.cabinet.include.menu')
 
-<div class="main-part">
+<div class="main-part" id="content">
 	<div class="main-part__inner">
 		<div class="content-part">
 			{{ Form::open(array('url'=>action('CabinetFieldController@postIndex', $object->id), 'method' => 'post', 'files'=> true)) }}
-			<span class="h-heading">{{ $title }}</span>
+			<div class="zaved-up">
+				<div class="mob-start mob-start--add">
+            <span></span>
+            <span></span>
+            <span></span>     
+        </div>
+				<span class="h-heading">{{ $title }}</span>
+			</div>
 			<div class="edit-parts">
 				<div class="edit-row">
 					<label class="edit-row__label" for="name">
@@ -83,37 +90,37 @@
 					<label class="edit-row__label" for="logo">
 						{{ $translator->getTransNameByKey('zaved_logo') }}:
 					</label>
-					<input class="edit-row__input" id="logo" name='logo' type="file" >
+					<input class="edit-row__input edit-row__input--file" id="logo" name='logo' type="file" >
 				</div>
 				<div class="edit-row">
 					<label class="edit-row__label" for="photo_1">
 						{{ $translator->getTransNameByKey('zaved_photo_item') }} 1:
 					</label>
-					<input class="edit-row__input" id="photo_1" name='photo_1' type="file" >
+					<input class="edit-row__input edit-row__input--file" id="photo_1" name='photo_1' type="file" >
 				</div>
 				<div class="edit-row">
 					<label class="edit-row__label" for="photo_2">
 						{{ $translator->getTransNameByKey('zaved_photo_item') }} 2:
 					</label>
-					<input class="edit-row__input" id="photo_2" name='photo_2' type="file" >
+					<input class="edit-row__input edit-row__input--file" id="photo_2" name='photo_2' type="file" >
 				</div>
 				<div class="edit-row">
 					<label class="edit-row__label" for="photo_3">
 						{{ $translator->getTransNameByKey('zaved_photo_item') }} 3:
 					</label>
-					<input class="edit-row__input" id="photo_3" name='photo_3' type="file" >
+					<input class="edit-row__input edit-row__input--file" id="photo_3" name='photo_3' type="file" >
 				</div>
 				<div class="edit-row">
 					<label class="edit-row__label" for="photo_4">
 						{{ $translator->getTransNameByKey('zaved_photo_item') }} 4:
 					</label>
-					<input class="edit-row__input" id="photo_4" name='photo_4' type="file" >
+					<input class="edit-row__input edit-row__input--file" id="photo_4" name='photo_4' type="file" >
 				</div>
 				<div class="edit-row">
 					<label class="edit-row__label" for="photo_5">
 						{{ $translator->getTransNameByKey('zaved_photo_item') }} 5:
 					</label>
-					<input class="edit-row__input" id="photo_5" name='photo_5' type="file" >
+					<input class="edit-row__input edit-row__input--file" id="photo_5" name='photo_5' type="file" >
 				</div>
 			</div>
 			<button type='submit' class="but" href="#">{{ $translator->getTransNameByKey('zaved_send') }}</button>

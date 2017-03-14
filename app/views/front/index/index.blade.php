@@ -4,10 +4,15 @@
 <div class="wrapper wrapper--main">
     <header class="header">
         @include('front.index.include.header')
-    </header>
+    </header>   
     <div class="main-part main-part--main">
         <div class="main-part__inner">
             <div class="main-up">
+                <div class="mob-start">
+                    <span></span>
+                    <span></span>
+                    <span></span>     
+                </div>
                 <div class="social">
                     <ul class="ul-social">
                         <li>

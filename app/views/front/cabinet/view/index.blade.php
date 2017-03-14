@@ -2,13 +2,20 @@
     <div class="main-part__inner">
         <div class="content-part">
             <div class="zaved-up">
-                <span class="zaved-up__img" style='width: 180px;'>
-                    @if ($standart_data && $standart_data->logo)
-                        <img src="{{ $standart_data->logo }}" style='width: 100%;' />
-                    @else
-                        <img src="/front/img/zaved-edit.jpg"  style='width: 100%;' />
-                    @endif
-                </span>
+                <div class="cab-top">
+	                <span class="zaved-up__img" style='width: 180px;'>
+	                    @if ($standart_data && $standart_data->logo)
+	                        <img src="{{ $standart_data->logo }}" style='width: 100%;' />
+	                    @else
+	                        <img src="/front/img/zaved-edit.jpg"  style='width: 100%;' />
+	                    @endif
+	                </span>
+		        		  <div class="mob-start mob-start--main">
+		                  <span></span>
+		                  <span></span>
+		                  <span></span>     
+		              </div>
+			        	</div>
                 <div class="upzaved-text">
                     <h3 class="upzaved-text__heading">
                         {{ $object->name }}
@@ -19,11 +26,11 @@
                         @endif
                     </span>
                     <ul class="zaved-menu">
-    					@include('front.cabinet.include.top_menu')
-					</ul>
+					    					@include('front.cabinet.include.top_menu')
+										</ul>
                 </div>
             </div>
-            <div class="zaved-photo">
+            <div class="zaved-photo">                
                 @include('front.cabinet.view.include.slider')
             </div>
             <div class="zaved-middle">

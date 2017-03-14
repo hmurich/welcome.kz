@@ -110,23 +110,23 @@ class CabinetFieldController extends PublicController {
         $ar = array();
         $ar['object_id'] = $object->id;
         if (Input::hasFile('photo_1')){
-            $ar['image'] = ModelSnipet::setImage(Input::file('photo_1'), 'logo', 644, 265);
+            $ar['image'] = ModelSnipet::setImage(Input::file('photo_1'), 'logo', 790, 324);
             $ar_files[] = $ar;
         }
         if (Input::hasFile('photo_2')){
-            $ar['image'] = ModelSnipet::setImage(Input::file('photo_2'), 'logo', 644, 265);
+            $ar['image'] = ModelSnipet::setImage(Input::file('photo_2'), 'logo', 790, 324);
             $ar_files[] = $ar;
         }
         if (Input::hasFile('photo_3')){
-            $ar['image'] = ModelSnipet::setImage(Input::file('photo_3'), 'logo', 644, 265);
+            $ar['image'] = ModelSnipet::setImage(Input::file('photo_3'), 'logo', 790, 324);
             $ar_files[] = $ar;
         }
         if (Input::hasFile('photo_4')){
-            $ar['image'] = ModelSnipet::setImage(Input::file('photo_4'), 'logo', 644, 265);
+            $ar['image'] = ModelSnipet::setImage(Input::file('photo_4'), 'logo', 790, 324);
             $ar_files[] = $ar;
         }
         if (Input::hasFile('photo_5')){
-            $ar['image'] = ModelSnipet::setImage(Input::file('photo_5'), 'logo', 644, 265);
+            $ar['image'] = ModelSnipet::setImage(Input::file('photo_5'), 'logo', 790, 324);
             $ar_files[] = $ar;
         }
 

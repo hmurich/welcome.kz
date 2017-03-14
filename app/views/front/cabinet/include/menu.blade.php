@@ -1,16 +1,23 @@
+
 <header class="header">
     <div class="header__inner">
         <span class="header-option">
             {{ $translator->getTransNameByKey('personal_cabinet') }}
         </span>
         <br/>
-            @if (!$object->is_active)
-                {{ $translator->getTransNameByKey('cabinet_on_moderate') }}
-            @elseif ($object->is_open)
-                <a href='{{ action("CabinetController@getOpenDoor", $object->id) }}'>{{ $translator->getTransNameByKey('close_cabinet') }} </a>
-            @else
-                <a href='{{ action("CabinetController@getOpenDoor", $object->id) }}'>{{ $translator->getTransNameByKey('open_cabinet') }}</a>
-            @endif
+        @if (!$object->is_active)
+            <span class="under-moderation">{{ $translator->getTransNameByKey('cabinet_on_moderate') }}</span>
+        @elseif ($object->is_open)
+            <a class="open-cab" href='{{ action("CabinetController@getOpenDoor", $object->id) }}'>
+                <span class="open-cab__text">{{ $translator->getTransNameByKey('close_cabinet') }}</span>
+                <div class="open-cab__area open-cab__area--area2"></div>
+            </a>
+        @else
+            <a class="open-cab" href='{{ action("CabinetController@getOpenDoor", $object->id) }}'>
+                <span class="open-cab__text">{{ $translator->getTransNameByKey('open_cabinet') }}</span>
+                <div class="open-cab__area"></div>
+            </a>
+        @endif
         <ul class="cab-menu">
             <li class="cab-menu__li cab-menu__li--approve">
                 <a href="{{ action('CabinetController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('personal_cabinet') }}</span></a>
