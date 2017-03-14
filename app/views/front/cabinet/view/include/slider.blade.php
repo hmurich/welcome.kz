@@ -1,16 +1,22 @@
 @if (isset($sliders) && $sliders->count())
     <div class="zaved-big">
         <div class="zaved-big__inner">
-            <img class="zaved-big__img" src="{{ $slider_1->image }}">
+            <div class="slider">
+            @foreach($sliders as $s)
+                <div class="slider-item">
+                    <img class="zaved-big__img" src="{{ $s->image }}">
+                </div>
+            @endforeach
+            </div>
         </div>
     </div>
-    <ul class="right-photo">
+    <div class="right-photo">
         @foreach($sliders as $s)
-            <li class="right-photo__li">
+            <div class="right-photo__li">
                 <img src="{{ $s->image }}">
-            </li>
+            </div>
         @endforeach
-    </ul>
+    </div>
 @else
     <div class="zaved-big">
         <div class="zaved-big__inner">

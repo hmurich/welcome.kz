@@ -10,7 +10,12 @@
 	<div class="main-part__inner">
 		<div class="content-part">
 			<div class="zaved-up">
-				<div class="upzaved-text">
+				<div class="mob-start mob-start--add">
+                    <span></span>
+                    <span></span>
+                    <span></span>     
+                </div>
+                <div class="where-up">
 					<h3 class="upzaved-text__heading">
 						{{ $title }}
 					</h3>
@@ -27,9 +32,9 @@
                         </a>
                         <div class="where-text">
                             <div class="where-text__inner">
-                                <span class="where-text__heading">
+                                <a href="#" class="where-text__heading">
                                     {{ $e->title }}
-                                </span>
+                                </a>
                                 <ul class="cont-ul">
                                     <li> {{ $e->note }}</li>
                                     <li><b>Дата события:</b> {{ $e->date_event_name }}</li>

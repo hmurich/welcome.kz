@@ -3,7 +3,7 @@
 
 @include('front.cabinet.include.menu')
 
-<div class="main-part">
+<div class="main-part" id="content">
 	<div class="main-part__inner">
 		<div class="content-part">
 			<div class="zaved-up">

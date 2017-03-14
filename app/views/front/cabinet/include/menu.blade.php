@@ -1,3 +1,4 @@
+
 <header class="header">
     <div class="header__inner">
         <span class="header-option">
@@ -5,11 +6,17 @@
         </span>
         <br/>
             @if (!$object->is_active)
-                Кабинет на модерации
+            <span class="under-moderation">Кабинет на модерации</span>
             @elseif ($object->is_open)
-                <a href='{{ action("CabinetController@getOpenDoor", $object->id) }}'>Закрыть кабинет</a>
+                <a class="open-cab" href='{{ action("CabinetController@getOpenDoor", $object->id) }}'>
+                    <span class="open-cab__text">Закрыть кабинет</span>
+                    <div class="open-cab__area open-cab__area--area2"></div>
+                </a>
             @else
-                <a href='{{ action("CabinetController@getOpenDoor", $object->id) }}'>Открыть кабинет</a>
+                <a class="open-cab" href='{{ action("CabinetController@getOpenDoor", $object->id) }}'>
+                    <span class="open-cab__text">Открыть кабинет</span>
+                    <div class="open-cab__area"></div>
+                </a>
             @endif
         <!--
             <div class="user-info">

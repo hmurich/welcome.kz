@@ -12,7 +12,14 @@
 	<div class="main-part__inner">
 		<div class="content-part">
             {{ Form::open(array('url'=>action('CabinetMapController@postIndex', $object->id), 'method' => 'post', 'files'=> true)) }}
-			<span class="h-heading">{{ $title }}</span>
+			<div class="zaved-up">
+        	<div class="mob-start mob-start--add">
+            <span></span>
+            <span></span>
+            <span></span>     
+        	</div>
+				<span class="h-heading">{{ $title }}</span>
+			</div>	
 			<div class="edit-parts">
 				<div class="edit-row">
 					<label class="edit-row__label" for="lng">

@@ -2,6 +2,7 @@
 <html lang="ru">
 	<head>
 		<meta charset="utf-8">
+		<meta id="viewport" name="viewport" content="width=device-width,initial-scale=1">
 		<link href="" rel="stylesheet" type="text/css">
 		<title>{{ (isset($title) ? $title : null) }}</title>
 	    {{ HTML::style('front/css/style.css'); }}

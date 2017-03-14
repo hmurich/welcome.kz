@@ -7,6 +7,11 @@
 	<div class="main-part__inner">
 		<div class="content-part">					
 			<div class="up-heading">
+                <div class="mob-start mob-start--news">
+                    <span></span>
+                    <span></span>
+                    <span></span>     
+                </div>
                 <h3 class="up-heading__heading">
 				  {{ $title }}
 			   </h3>
