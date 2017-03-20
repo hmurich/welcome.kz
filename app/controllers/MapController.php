@@ -77,12 +77,14 @@ class MapController extends PublicController {
         $geo = array();
         foreach($filters as $f){
             $ar = array();
-            if (!$f->relLocation)
+            if (!$f->relLocation || !$f->relStandartData)
                 continue;
             $ar['lng'] = $f->relLocation->lng;
             $ar['lat'] = $f->relLocation->lat;
             $ar['id'] = $f->id;
             $ar['name'] = $f->name;
+            $ar['address'] = $f->relStandartData->address;
+            $ar['note'] = $f->relStandartData->note;
 
             $geo[] = $ar;
         }

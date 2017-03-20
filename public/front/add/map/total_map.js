@@ -75,8 +75,11 @@ function init()
         myCollection = new ymaps.GeoObjectCollection();
 
         jQuery.each(objects, function( key, value ) {
+            var text_baloon = '<a href="/show/index/' + value.id + '">' + value.name + '</a>';
+            text_baloon = text_baloon + '<p>'+value.note+'</p>';
+            text_baloon = text_baloon + '<p>'+value.address+'</p>';
             placemark = new ymaps.Placemark([value.lng, value.lat], {
-               balloonContent: '<a href="/show/index/' + value.id + '">' + value.name + '</a>'
+               balloonContent: text_baloon
             });
 
             myCollection.add(placemark);
