@@ -114,7 +114,7 @@ function init()
 
             element = element           + '</ul>'
                                         + '<p class="info-zaved__regym">'
-                                            + '<span>Режим работы:</span> 12:00 - 00.00'
+                                            + '<span>Режим работы:</span> ' + value.time_begin + ' - ' + value.time_end + ''
                                         + '</p>'
                                     + '</div>'
                                 + '</a>'
