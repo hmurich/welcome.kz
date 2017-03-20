@@ -64,6 +64,9 @@ class SearchController extends PublicController {
 			else
 				$ar['logo'] = $f->relStandartData->logo;
 
+            if (!$ar['logo'])
+                $ar['logo'] = 'https://api.fnkr.net/testimg/70x90/00CED1/FFF/?text=img+placeholder';
+
             $ar['time_begin'] = $f->relStandartData->begin_time;
             $ar['time_end'] = $f->relStandartData->end_time;
 
@@ -75,6 +78,8 @@ class SearchController extends PublicController {
                 $options[$filter_name] = implode(", ", $i->getVal());
             }
             $options['Адресс'] = $f->relStandartData->address;
+
+            $ar['options'] = $options;
 
             $res[] = $ar;
         }

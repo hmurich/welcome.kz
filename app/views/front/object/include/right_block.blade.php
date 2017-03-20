@@ -3,9 +3,17 @@
 		<span class="header-option">{{ $object->name }}</span>
 		<ul class="zaved-ul js_object_list">
             @foreach ($simular_objects as $s)
+				<?php
+					$first_image = $s->relSliders()->first();
+			        if ($first_image)
+			            $first_image = $first_image->image;
+
+			        if (!$first_image)
+			            $first_image = 'https://api.fnkr.net/testimg/70x90/00CED1/FFF/?text=img+placeholder';
+				?>
                 <li>
     				<a class="mini-zaved" href="{{ action('ObjectController@getIndex', $s->id) }}">
-    					<img class="mini-zaved__img" src="{{ $s->relStandartData->logo }}" style="max-width: 80px; margin-right: 5px;">
+    					<img class="mini-zaved__img" src="{{ $first_image }}" style="max-width: 80px; margin-right: 5px;">
     					<div class="info-zaved">
     						<span class="info-zaved__heading">
     							{{ $s->name }}
