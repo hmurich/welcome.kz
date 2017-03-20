@@ -140,7 +140,7 @@ class ObjectController extends PublicController {
                                         ->with('relLocation', 'relStandartData', 'relSpecialData')
                                         ->orderBy('sort_index', 'desc')->take(12)->get();
         $ar['translator'] = $this->translator;
-        
+
         return View::make('front.object.news', $ar);
     }
 

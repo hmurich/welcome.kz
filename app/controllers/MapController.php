@@ -114,16 +114,20 @@ class MapController extends PublicController {
         else
             $ar['logo'] = $f->relStandartData->logo;
 
+        if (!$ar['logo'])
+            $ar['logo'] = 'https://api.fnkr.net/testimg/70x90/00CED1/FFF/?text=img+placeholder';
+
         $ar['time_begin'] = $f->relStandartData->begin_time;
         $ar['time_end'] = $f->relStandartData->end_time;
 
         $options = array();
-
+        $options['Краткий описание'] = $f->relStandartData->slogan;
         $fields =  $f->relSpecialData()->where('show_filter', 1)->get();
         foreach ($fields as $i) {
             $filter_name = $this->translator->getTransNameByKey(SysFilter::getTransKey($i->filter_id));
             $options[$filter_name] = implode(", ", $i->getVal());
         }
+        $options['Адресс'] = $f->relStandartData->address;
 
         $ar['options'] = $options;
 

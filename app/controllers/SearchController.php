@@ -68,14 +68,13 @@ class SearchController extends PublicController {
             $ar['time_end'] = $f->relStandartData->end_time;
 
             $options = array();
-
+            $options['Краткий описание'] = $f->relStandartData->slogan;
             $fields =  $f->relSpecialData()->where('show_filter', 1)->get();
             foreach ($fields as $i) {
                 $filter_name = $this->translator->getTransNameByKey(SysFilter::getTransKey($i->filter_id));
                 $options[$filter_name] = implode(", ", $i->getVal());
             }
-
-            $ar['options'] = $options;
+            $options['Адресс'] = $f->relStandartData->address;
 
             $res[] = $ar;
         }

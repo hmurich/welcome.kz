@@ -11,11 +11,13 @@
     							{{ $s->name }}
     						</span>
     						<ul class="info-ul">
+								<li><span>Краткий описание</span>{{ $s->relStandartData->slogan }}</li>
                                 @foreach ($s->relSpecialData()->where('show_filter', 1)->get() as $i)
                                     <li>
         								<span>{{ $translator->getTransNameByKey(SysFilter::getTransKey($i->filter_id)) }}:</span> {{ implode(", ", $i->getVal()) }}
         							</li>
                                 @endforeach
+								<li><span>Адресс</span>{{ $s->relStandartData->address }}</li>
     						</ul>
     						<p class="info-zaved__regym">
     							<span>Режим работы:</span> {{ $s->relStandartData->begin_time }} - {{ $s->relStandartData->end_time }}
