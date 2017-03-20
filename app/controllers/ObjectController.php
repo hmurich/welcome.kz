@@ -139,7 +139,8 @@ class ObjectController extends PublicController {
                                         ->where(array('is_active'=>1, 'is_open'=>1))
                                         ->with('relLocation', 'relStandartData', 'relSpecialData')
                                         ->orderBy('sort_index', 'desc')->take(12)->get();
-
+        $ar['translator'] = $this->translator;
+        
         return View::make('front.object.news', $ar);
     }
 

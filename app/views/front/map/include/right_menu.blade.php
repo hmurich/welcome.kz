@@ -3,7 +3,7 @@
 		<span class="header-option">{{ $translator->getTransNameByKey(SysCompanyCat::getTransKey($cat->id), $cat->name) }}</span>
 		<div class="header-options">
 			<select class="header-options__select  js_change_city" data-reload='1'>
-	            <option selected="true" disabled>{{ $translator->getTransNameByKey('select_city'); }}</option>
+	            <option selected="true" disabled>{{ $translator->getTransNameByKey('select_city', 'Выберите город'); }}</option>
 	            @foreach ($cities as $id => $name))
 	                <option value='{{ $id }}' {{ ($city_id == $id ? 'selected' : null) }}>
 	                    {{ $translator->getTransNameByKey(SysDirectoryName::getTransKey($id), $name); }}
