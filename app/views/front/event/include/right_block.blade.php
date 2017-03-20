@@ -1,8 +1,9 @@
-<header class="header" id="container">
-	<div class="header__inner">
+<header class="header" id="container">	
+    <div class="header__inner">
 		<span class="header-option">
 			Уточните параметры для лучшего поиска
 		</span>
+        <span class="back">Назад</span>
 		<div class="header-options {{ (Input::has('role_id') ? 'header-options--active' : null) }}">
             {{ Form::open(array('url'=>action('EventController@getIndex'), 'method' => 'get')) }}
                 <select class="header-options__select  js_change_city">
@@ -35,8 +36,8 @@
                 <input class="but header-options__but" type='submit' />
 
             {{ Form::close() }}
-			<div class="show-filtr {{ (Input::has('role_id') ? 'show-filtr--active' : 'sdfsdf') }}" data-close='{{ $translator->getTransNameByKey('close_filter'); }}' data-open='{{ $translator->getTransNameByKey('open_filter'); }}'>
-				<span>{{ (Input::has('role_id') ? $translator->getTransNameByKey('close_filter') : $translator->getTransNameByKey('open_filter')) }}</span>
+			<div class="show-filtr {{ (Input::has('role_id') ? 'show-filtr--active' : 'sdfsdf') }}">
+				<span data-close='{{ $translator->getTransNameByKey('close_filter') }}' data-open='{{ $translator->getTransNameByKey('open_filter') }}'>{{ (Input::has('role_id') ? $translator->getTransNameByKey('close_filter') : $translator->getTransNameByKey('open_filter')) }}</span>
 			</div>
 		</div>
         {{ Form::open(array('url'=>action('EventController@getIndex'), 'method' => 'get', 'class'=>'js_datepicker_form')) }}

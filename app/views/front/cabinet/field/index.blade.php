@@ -123,6 +123,75 @@
 					<input class="edit-row__input edit-row__input--file" id="photo_5" name='photo_5' type="file" >
 				</div>
 			</div>
+			<span class="edit-heading">Логотип и фотография в каталог</span>
+			<ul class="photo-ul">
+				<li>
+					<div class="d-photo">
+						<input class="d-photo__file" type="file">
+						<button class="d-photo__submit" type="submit">
+							Загрузить логотип
+						</button>
+						<button class="d-photo__submit d-photo__submit--delete" type="submit">
+							Удалить фотографию
+						</button>
+					</div>
+				</li>
+				<li>
+					<div class="d-photo">
+						<input class="d-photo__file" type="file">
+						<button class="d-photo__submit" type="submit">
+							Фотография в каталог
+						</button>
+						<button class="d-photo__submit d-photo__submit--delete" type="submit">
+							Удалить фотографию
+						</button>
+					</div>
+				</li>				
+			</ul>
+			<span class="edit-heading">Слайдер</span>
+			<ul class="photo-ul">
+				<li>
+					<div class="d-photo">
+						<input class="d-photo__file" type="file">
+						<button class="d-photo__submit" type="submit">
+							Загрузить фотографию
+						</button>
+						<button class="d-photo__submit d-photo__submit--delete" type="submit">
+							Удалить фотографию
+						</button>
+					</div>
+				</li>
+				<li>
+					<div class="d-photo">
+						<input class="d-photo__file" type="file">
+						<button class="d-photo__submit" type="submit">
+							Загрузить фотографию
+						</button>
+						<button class="d-photo__submit d-photo__submit--delete" type="submit">
+							Удалить фотографию
+						</button>
+					</div>
+				</li>
+				<li>
+					<div class="d-photo">
+						<input class="d-photo__file" type="file">
+						<button class="d-photo__submit" type="submit">
+							Загрузить фотографию
+						</button>
+						<button class="d-photo__submit d-photo__submit--delete" type="submit">
+							Удалить фотографию
+						</button>
+					</div>
+				</li>
+				<li>
+					<div class="d-photo">
+						<input class="d-photo__file" type="file">
+						<button class="d-photo__submit" type="submit">
+							Загрузить фотографию
+						</button>
+					</div>
+				</li>								
+			</ul>
 			<button type='submit' class="but" href="#">{{ $translator->getTransNameByKey('zaved_send') }}</button>
 			{{ Form::close() }}
 		</div>

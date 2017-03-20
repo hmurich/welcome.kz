@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="wrapper wrapper--main">
-    <header class="header">
+    <header class="header" id="container">
         @include('front.index.include.header')
     </header>   
     <div class="main-part main-part--main">
