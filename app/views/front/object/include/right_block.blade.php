@@ -11,7 +11,8 @@
 			        if (!$first_image)
 			            $first_image = 'https://api.fnkr.net/testimg/70x90/00CED1/FFF/?text=img+placeholder';
 				?>
-                <li>
+
+                <li class='{{ ($s->id == $object->id ? "main_object" : null) }}'>
     				<a class="mini-zaved" href="{{ action('ObjectController@getIndex', $s->id) }}">
     					<img class="mini-zaved__img" src="{{ $first_image }}" style="max-width: 80px; margin-right: 5px;">
     					<div class="info-zaved">
@@ -19,13 +20,13 @@
     							{{ $s->name }}
     						</span>
     						<ul class="info-ul">
-								<li><span>Краткий описание</span>{{ $s->relStandartData->slogan }}</li>
+								<li>{{ $s->relStandartData->slogan }}</li>
                                 @foreach ($s->relSpecialData()->where('show_filter', 1)->get() as $i)
                                     <li>
-        								<span>{{ $translator->getTransNameByKey(SysFilter::getTransKey($i->filter_id)) }}:</span> {{ implode(", ", $i->getVal()) }}
+        								 {{ implode(", ", $i->getVal()) }}
         							</li>
                                 @endforeach
-								<li><span>Адресс</span>{{ $s->relStandartData->address }}</li>
+								<li>{{ $s->relStandartData->address }}</li>
     						</ul>
     						<p class="info-zaved__regym">
     							<span>Режим работы:</span> {{ $s->relStandartData->begin_time }} - {{ $s->relStandartData->end_time }}

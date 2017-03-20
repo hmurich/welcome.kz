@@ -107,7 +107,7 @@ function init()
                                         + '<ul class="info-ul">';
             jQuery.each(value.options, function( key, value ) {
                 element = element + '<li>'
-                        + '<span>' + key + ':</span>' + value
+                        + value
                    + '</li>';
             });
 
