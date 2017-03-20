@@ -1,6 +1,7 @@
-<header class="header " >
+<header class="header" id="container">
 	<div class="header__inner">
 		<span class="header-option">{{ $object->name }}</span>
+        <span class="back">Назад</span>
 		<ul class="zaved-ul js_object_list">
             @foreach ($simular_objects as $s)
 				<?php

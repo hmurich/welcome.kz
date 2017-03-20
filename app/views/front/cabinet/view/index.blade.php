@@ -10,12 +10,12 @@
 	                        <img src="/front/img/zaved-edit.jpg"  style='width: 100%;' />
 	                    @endif
 	                </span>
-		        		  <div class="mob-start mob-start--main">
+		        	<div class="mob-start mob-start--main">
 		                  <span></span>
 		                  <span></span>
 		                  <span></span>     
-		              </div>
-			        	</div>
+		            </div>
+			     </div>
                 <div class="upzaved-text">
                     <h3 class="upzaved-text__heading">
                         {{ $object->name }}

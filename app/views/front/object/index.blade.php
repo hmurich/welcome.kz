@@ -9,17 +9,24 @@
 
 @include('front.object.include.right_block')
 
-<div class="main-part">
+<div class="main-part" id="content">
     <div class="main-part__inner">
         <div class="content-part">
             <div class="zaved-up">
-                <span class="zaved-up__img" style='width: 180px;'>
-                    @if ($standart_data && $standart_data->logo)
-                        <img src="{{ $standart_data->logo }}" style='width: 100%;' />
-                    @else
-                        <img src="/front/img/empty_logo.png"  style='width: 100%;' />
-                    @endif
-                </span>
+                <div class="cab-top">
+                    <span class="zaved-up__img" style='width: 180px;'>
+                        @if ($standart_data && $standart_data->logo)
+                            <img src="{{ $standart_data->logo }}" style='width: 100%;' />
+                        @else
+                            <img src="/front/img/empty_logo.png"  style='width: 100%;' />
+                        @endif
+                    </span>
+                    <div class="mob-start mob-start--main">
+                          <span></span>
+                          <span></span>
+                          <span></span>     
+                    </div>
+                </div>
                 <div class="upzaved-text">
                     <h3 class="upzaved-text__heading">
                         {{ $object->name }}
