@@ -58,11 +58,7 @@ class SearchController extends PublicController {
                 $ar['lat'] = null;
             }
 
-			$first_image = $f->relSliders()->first();
-			if ($first_image)
-				$ar['logo'] = $first_image->image;
-			else
-				$ar['logo'] = $f->relStandartData->logo;
+			$ar['logo'] = $f->relStandartData->logo_catalog;
 
             if (!$ar['logo'])
                 $ar['logo'] = 'https://api.fnkr.net/testimg/70x90/00CED1/FFF/?text=img+placeholder';
