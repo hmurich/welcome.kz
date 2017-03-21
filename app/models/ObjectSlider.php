@@ -1,7 +1,7 @@
 <?php
 class ObjectSlider extends Eloquent {
 	protected $table = 'object_slider';
-    protected $fillable = array('object_id', 'image');
+    protected $fillable = array('object_id', 'image', 'sys_key');
     public $timestamps = false;
 
     function getCreatedAtAttribute($value){

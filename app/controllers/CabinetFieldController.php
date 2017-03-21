@@ -32,6 +32,11 @@ class CabinetFieldController extends PublicController {
         $ar['ar_city'] = SysCity::getAr();
 
         $ar['translator'] = $this->translator;
+        $ar['photo_1'] = ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>1))->first();
+        $ar['photo_2'] = ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>2))->first();
+        $ar['photo_3'] = ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>3))->first();
+        $ar['photo_4'] = ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>4))->first();
+        $ar['photo_5'] = ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>5))->first();
 
         return View::make('front.cabinet.field.index', $ar);
     }
@@ -63,6 +68,9 @@ class CabinetFieldController extends PublicController {
 
         if (Input::hasFile('logo'))
             $standart_data->logo = ModelSnipet::setImage(Input::file('logo'), 'logo', 150, 100);
+        if (Input::hasFile('logo_catalog'))
+            $standart_data->logo_catalog = ModelSnipet::setImage(Input::file('logo_catalog'), 'logo', 70, 90);
+
         $standart_data->save();
 
         ObjectSpecialData::where('object_id', $object->id)->delete();
@@ -106,36 +114,81 @@ class CabinetFieldController extends PublicController {
             }
         }
 
-        $ar_files = array();
-        $ar = array();
-        $ar['object_id'] = $object->id;
         if (Input::hasFile('photo_1')){
-            $ar['image'] = ModelSnipet::setImage(Input::file('photo_1'), 'logo', 790, 324);
-            $ar_files[] = $ar;
+            $photo = ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>1))->first();
+            if (!$photo)
+                $photo = new ObjectSlider();
+            $photo->object_id = $object->id;
+            $photo->sys_key = 1;
+            $photo->image = ModelSnipet::setImage(Input::file('photo_1'), 'logo', 790, 324);
+            $photo->save();
         }
         if (Input::hasFile('photo_2')){
-            $ar['image'] = ModelSnipet::setImage(Input::file('photo_2'), 'logo', 790, 324);
-            $ar_files[] = $ar;
+            $photo = ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>2))->first();
+            if (!$photo)
+                $photo = new ObjectSlider();
+            $photo->object_id = $object->id;
+            $photo->sys_key = 2;
+            $photo->image = ModelSnipet::setImage(Input::file('photo_2'), 'logo', 790, 324);
+            $photo->save();
         }
         if (Input::hasFile('photo_3')){
-            $ar['image'] = ModelSnipet::setImage(Input::file('photo_3'), 'logo', 790, 324);
-            $ar_files[] = $ar;
+            $photo = ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>3))->first();
+            if (!$photo)
+                $photo = new ObjectSlider();
+            $photo->object_id = $object->id;
+            $photo->sys_key = 3;
+            $photo->image = ModelSnipet::setImage(Input::file('photo_3'), 'logo', 790, 324);
+            $photo->save();
         }
         if (Input::hasFile('photo_4')){
-            $ar['image'] = ModelSnipet::setImage(Input::file('photo_4'), 'logo', 790, 324);
-            $ar_files[] = $ar;
+            $photo = ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>4))->first();
+            if (!$photo)
+                $photo = new ObjectSlider();
+            $photo->object_id = $object->id;
+            $photo->sys_key = 4;
+            $photo->image = ModelSnipet::setImage(Input::file('photo_4'), 'logo', 790, 324);
+            $photo->save();
         }
         if (Input::hasFile('photo_5')){
-            $ar['image'] = ModelSnipet::setImage(Input::file('photo_5'), 'logo', 790, 324);
-            $ar_files[] = $ar;
+            $photo = ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>5))->first();
+            if (!$photo)
+                $photo = new ObjectSlider();
+            $photo->object_id = $object->id;
+            $photo->sys_key = 5;
+            $photo->image = ModelSnipet::setImage(Input::file('photo_5'), 'logo', 790, 324);
+            $photo->save();
         }
 
-        if (count($ar_files) > 0)
-            ObjectSlider::insert($ar_files);
 
         DB::commit();
 
         return Redirect::back()->with('success', $this->translator->getTransNameByKey('edit_infrom_success_mess'));
+    }
+
+    function getDeleteImg($type, $object_id, $id = 0){
+        $user = Auth::user();
+        $company = $user->relCompany;
+        $object = Object::where(array('company_id'=>$company->id, 'id'=>$object_id))->first();
+        if (!$object)
+            return App::abort(404);
+
+        if ($type == 'logo'){
+            $standart_data = $object->relStandartData;
+            $standart_data->logo = null;
+            $standart_data->save();
+        }
+
+        if ($type == 'logo_catalog'){
+            $standart_data = $object->relStandartData;
+            $standart_data->logo_catalog = null;
+            $standart_data->save();
+        }
+
+        if ($type == 'photo_1')
+            ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>1))->delete();
+
+        return Redirect::back();
     }
 
 }

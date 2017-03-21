@@ -11,7 +11,7 @@
 				<div class="mob-start mob-start--add">
             <span></span>
             <span></span>
-            <span></span>     
+            <span></span>
         </div>
 				<span class="h-heading">{{ $title }}</span>
 			</div>
@@ -84,113 +84,131 @@
 				</div>
 
 			</div>
-			<span class="edit-heading">{{ $translator->getTransNameByKey('zaved_photo') }}</span>
-			<div class="edit-parts">
-				<div class="edit-row">
-					<label class="edit-row__label" for="logo">
-						{{ $translator->getTransNameByKey('zaved_logo') }}:
-					</label>
-					<input class="edit-row__input edit-row__input--file" id="logo" name='logo' type="file" >
-				</div>
-				<div class="edit-row">
-					<label class="edit-row__label" for="photo_1">
-						{{ $translator->getTransNameByKey('zaved_photo_item') }} 1:
-					</label>
-					<input class="edit-row__input edit-row__input--file" id="photo_1" name='photo_1' type="file" >
-				</div>
-				<div class="edit-row">
-					<label class="edit-row__label" for="photo_2">
-						{{ $translator->getTransNameByKey('zaved_photo_item') }} 2:
-					</label>
-					<input class="edit-row__input edit-row__input--file" id="photo_2" name='photo_2' type="file" >
-				</div>
-				<div class="edit-row">
-					<label class="edit-row__label" for="photo_3">
-						{{ $translator->getTransNameByKey('zaved_photo_item') }} 3:
-					</label>
-					<input class="edit-row__input edit-row__input--file" id="photo_3" name='photo_3' type="file" >
-				</div>
-				<div class="edit-row">
-					<label class="edit-row__label" for="photo_4">
-						{{ $translator->getTransNameByKey('zaved_photo_item') }} 4:
-					</label>
-					<input class="edit-row__input edit-row__input--file" id="photo_4" name='photo_4' type="file" >
-				</div>
-				<div class="edit-row">
-					<label class="edit-row__label" for="photo_5">
-						{{ $translator->getTransNameByKey('zaved_photo_item') }} 5:
-					</label>
-					<input class="edit-row__input edit-row__input--file" id="photo_5" name='photo_5' type="file" >
-				</div>
-			</div>
 			<span class="edit-heading">Логотип и фотография в каталог</span>
 			<ul class="photo-ul">
 				<li>
 					<div class="d-photo">
-						<input class="d-photo__file" type="file">
-						<button class="d-photo__submit" type="submit">
+						@if ($standart_data->logo)
+							<img src="{{ $standart_data->logo }}" class="d-photo__file" />
+							<input type="file" name='logo' style='display:none' id='logo_uplload'>
+						@else
+							<input class="d-photo__file" type="file" name='logo' id='logo_uplload'>
+						@endif
+						<button class="d-photo__submit js_upload_logo" data-id='logo_uplload' type="button" >
 							Загрузить логотип
 						</button>
-						<button class="d-photo__submit d-photo__submit--delete" type="submit">
-							Удалить фотографию
-						</button>
+						@if ($standart_data->logo)
+							<a href='{{ action("CabinetFieldController@getDeleteImg", array('logo', $object->id)) }}'>
+								<button class="d-photo__submit d-photo__submit--delete" type="button">
+									Удалить фотографию
+								</button>
+							</a>
+						@endif
 					</div>
 				</li>
 				<li>
 					<div class="d-photo">
-						<input class="d-photo__file" type="file">
-						<button class="d-photo__submit" type="submit">
+						@if ($standart_data->logo_catalog)
+							<img src="{{ $standart_data->logo_catalog }}" class="d-photo__file" />
+							<input type="file" name='logo_catalog' style='display:none' id='logo_catalog'>
+						@else
+							<input class="d-photo__file" type="file" name='logo_catalog' id='logo_catalog'>
+						@endif
+						<button class="d-photo__submit js_upload_logo" data-id='logo_catalog'  type="button">
 							Фотография в каталог
 						</button>
-						<button class="d-photo__submit d-photo__submit--delete" type="submit">
-							Удалить фотографию
-						</button>
+						@if ($standart_data->logo_catalog)
+							<a href='{{ action("CabinetFieldController@getDeleteImg", array('logo_catalog', $object->id)) }}'>
+								<button class="d-photo__submit d-photo__submit--delete" type="button">
+									Удалить фотографию
+								</button>
+							</a>
+						@endif
 					</div>
-				</li>				
+				</li>
 			</ul>
 			<span class="edit-heading">Слайдер</span>
 			<ul class="photo-ul">
 				<li>
 					<div class="d-photo">
-						<input class="d-photo__file" type="file">
-						<button class="d-photo__submit" type="submit">
+						@if ($photo_1)
+							<img src="{{ $photo_1->image }}" class="d-photo__file" />
+							<input type="file" name='photo_1' style='display:none' id='photo_1'>
+						@else
+							<input class="d-photo__file" type="file" name='photo_1' id='photo_1'>
+						@endif
+						<button class="d-photo__submit js_upload_logo" data-id='photo_1' type="button">
 							Загрузить фотографию
 						</button>
-						<button class="d-photo__submit d-photo__submit--delete" type="submit">
-							Удалить фотографию
-						</button>
+						@if ($photo_1)
+							<a href='{{ action("CabinetFieldController@getDeleteImg", array('photo_1', $object->id)) }}'>
+								<button class="d-photo__submit d-photo__submit--delete" type="button">
+									Удалить фотографию
+								</button>
+							</a>
+						@endif
 					</div>
 				</li>
 				<li>
 					<div class="d-photo">
-						<input class="d-photo__file" type="file">
-						<button class="d-photo__submit" type="submit">
+						@if ($photo_2)
+							<img src="{{ $photo_2->image }}" class="d-photo__file" />
+							<input type="file" name='photo_2' style='display:none' id='photo_2'>
+						@else
+							<input class="d-photo__file" type="file" name='photo_2' id='photo_2'>
+						@endif
+						<button class="d-photo__submit js_upload_logo" data-id='photo_2' type="button">
 							Загрузить фотографию
 						</button>
-						<button class="d-photo__submit d-photo__submit--delete" type="submit">
-							Удалить фотографию
-						</button>
+						@if ($photo_2)
+							<a href='{{ action("CabinetFieldController@getDeleteImg", array('photo_2', $object->id)) }}'>
+								<button class="d-photo__submit d-photo__submit--delete" type="button">
+									Удалить фотографию
+								</button>
+							</a>
+						@endif
 					</div>
 				</li>
 				<li>
 					<div class="d-photo">
-						<input class="d-photo__file" type="file">
-						<button class="d-photo__submit" type="submit">
+						@if ($photo_3)
+							<img src="{{ $photo_3->image }}" class="d-photo__file" />
+							<input type="file" name='photo_3' style='display:none' id='photo_3'>
+						@else
+							<input class="d-photo__file" type="file" name='photo_3' id='photo_3'>
+						@endif
+						<button class="d-photo__submit js_upload_logo" data-id='photo_3' type="button">
 							Загрузить фотографию
 						</button>
-						<button class="d-photo__submit d-photo__submit--delete" type="submit">
-							Удалить фотографию
-						</button>
+						@if ($photo_3)
+							<a href='{{ action("CabinetFieldController@getDeleteImg", array('photo_3', $object->id)) }}'>
+								<button class="d-photo__submit d-photo__submit--delete" type="button">
+									Удалить фотографию
+								</button>
+							</a>
+						@endif
 					</div>
 				</li>
 				<li>
 					<div class="d-photo">
-						<input class="d-photo__file" type="file">
-						<button class="d-photo__submit" type="submit">
+						@if ($photo_4)
+							<img src="{{ $photo_4->image }}" class="d-photo__file" />
+							<input type="file" name='photo_4' style='display:none' id='photo_4'>
+						@else
+							<input class="d-photo__file" type="file" name='photo_4' id='photo_4'>
+						@endif
+						<button class="d-photo__submit js_upload_logo" data-id='photo_4' type="button">
 							Загрузить фотографию
 						</button>
+						@if ($photo_4)
+							<a href='{{ action("CabinetFieldController@getDeleteImg", array('photo_4', $object->id)) }}'>
+								<button class="d-photo__submit d-photo__submit--delete" type="button">
+									Удалить фотографию
+								</button>
+							</a>
+						@endif
 					</div>
-				</li>								
+				</li>
 			</ul>
 			<button type='submit' class="but" href="#">{{ $translator->getTransNameByKey('zaved_send') }}</button>
 			{{ Form::close() }}
