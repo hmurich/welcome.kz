@@ -188,6 +188,18 @@ class CabinetFieldController extends PublicController {
         if ($type == 'photo_1')
             ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>1))->delete();
 
+        if ($type == 'photo_2')
+            ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>3))->delete();
+
+        if ($type == 'photo_3')
+            ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>3))->delete();
+
+        if ($type == 'photo_4')
+            ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>4))->delete();
+
+        if ($type == 'photo_5')
+            ObjectSlider::where(array('object_id'=>$object->id, 'sys_key'=>5))->delete();
+
         return Redirect::back();
     }
 
