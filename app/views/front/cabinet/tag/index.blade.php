@@ -20,10 +20,9 @@
 						{{ $translator->getTransNameByKey('tag_note_title') }}:
 					</label>
 					<textarea class="edit-textarea__textarea" id="note" name='note' type="text" placeholder="{{ $translator->getTransNameByKey('tag_note_placeholder') }}">{{ $tag->note }}</textarea>
-
-				</div>
-				<button class="but" type="submit">{{ $translator->getTransNameByKey('tag_send') }}</button>
+				</div>				
 			</div>
+			<button class="but" type="submit">{{ $translator->getTransNameByKey('tag_send') }}</button>
             {{ Form::close() }}
 		</div>
 	</div>

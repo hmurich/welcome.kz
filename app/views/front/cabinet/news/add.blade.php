@@ -2,11 +2,11 @@
 @section('content')
 
 @include('front.cabinet.include.menu')
-<div class="main-part">
+<div class="main-part" id="content">
 	<div class="main-part__inner">
 		<div class="content-part">
             {{ Form::open(array('url'=>$action, 'method' => 'post', 'files'=> true)) }}
-			<div class="up-heading">
+			<div class="zaved-up">
         <div class="mob-start mob-start--news">
             <span></span>
             <span></span>
@@ -25,7 +25,7 @@
 					<label class="edit-row__label" for="image">
 						{{ $translator->getTransNameByKey('news_photo') }}:
 					</label>
-					<input class="edit-row__input" id="image" name='image' type="file" required="">
+					<input class="edit-row__input edit-row__input--file" id="image" name='image' type="file" required="">
 				</div>
 				<div class="edit-textarea">
 					<label class="edit-textarea__label" for="">

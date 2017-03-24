@@ -40,9 +40,7 @@
                 </div>
             </div>
             <div class="main-search">
-                <h1 class="main-search__heading">
-                    Welcome<br> to kazakhstan
-                </h1>
+                <h1 class="main-search__heading">Welcome<br> to kazakhstan</h1>
                 <form method="GET" action='{{ action("SearchController@getIndex") }}' class='js_send_search_form'>
                     <div class="search-part">
                     	<input class="search-part__input js_send_search_value" type="text" placeholder="Я ищу..." name='search'>

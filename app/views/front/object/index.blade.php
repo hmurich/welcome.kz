@@ -114,7 +114,6 @@
                 <div class="zaved-map js_map_field_main map" id='map' data-lng='{{ $location->lng }}' data-lat='{{ $location->lat }}'></div>
 
                 <div class="clear"></div>
-                <br /><br />
                 <div class="zaved-info">
                     @include('front.object.include.comment')
                 </div>
