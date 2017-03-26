@@ -47,6 +47,14 @@
             </li>
         @endif
     </ul>
+    <div class="header-slider">
+        <div>
+            <img src="/front/img/banner1.jpg">
+        </div>
+        <div>
+            <img src="/front/img/banner2.jpg">
+        </div>
+    </div>
 </div>
 <div class="uzor uzor--one"></div>
 <div class="uzor uzor--two"></div>

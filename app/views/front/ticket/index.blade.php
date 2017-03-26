@@ -8,20 +8,22 @@
 		<ul class="ticket-ul">
             @foreach($items as $i)
                 <li>
-                    <div class="ticket-part">
-                        <a class="ticket-status" href="#">
-                            {{ $ar_status[$i->status_id] }}
-                        </a>
-                        <div class="ncab-up">
-                            <span class="ncab-up__heading">
-								{{ $ar_cats[$i->cat_id] }}
-							</span>
-                            <a href='{{ action('TicketController@getHistory', $i->id) }}' class='ncab-up__edit ncab-up__edit--delete'>
+                    <div class="ticket-part">                     
+                        <span class="ticket-part__heading">
+							{{ $ar_cats[$i->cat_id] }}
+						</span>
+                        <div class="ticket-status" href="#">
+                            <span class="ticket-status__name">Статус:</span>
+                            <span class="ticket-status__type">{{ $ar_status[$i->status_id] }}</span>
+                        </div>   
+                         <a href='{{ action('TicketController@getHistory', $i->id) }}' class='ticket-history'>
                                 {{ $translator->getTransNameByKey('history_cabinet'); }}
-                            </a>
-                        </div>
-                        <span>{{ $i->title }}</span>
-                        <p>{{ $i->note }}</p>
+                        </a>                        
+                        <div class="ticket-status" href="#">
+                            <span class="ticket-status__name">Тема:</span>
+                            <span class="ticket-status__type">{{ $i->title }}</span>
+                        </div>  
+                        <p class="ticket__des">{{ $i->note }}</p>
                     </div>
                 </li>
             @endforeach
