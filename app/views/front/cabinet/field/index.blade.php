@@ -80,7 +80,7 @@
 					<label class="edit-row__label" for="phone">
 						{{ $translator->getTransNameByKey('zaved_note') }}:
 					</label>
-					<textarea class='edit-row__input' name='note'>{{ $standart_data->note }}</textarea>
+					<textarea class='edit-row__textarea' name='note'>{{ $standart_data->note }}</textarea>
 				</div>
 
 			</div>

@@ -49,12 +49,12 @@
 
 		<div class="header-bot">
             <div class="header-bot__inner">
-                <div class="bot-search">
-                    <input class="bot-search__input" type="text" placeholder="{{ $translator->getTransNameByKey('i_find'); }}">
-                    <input class="bot-search__submit"  type="submit">
-                </div>
             </div>
 		</div>
+         <div class="bot-search">
+            <input class="bot-search__input" type="text" placeholder="{{ $translator->getTransNameByKey('i_find'); }}">
+            <input class="bot-search__submit"  type="submit">
+        </div>
 	</div>
 	<div class="uzor uzor--one"></div>
 	<div class="uzor uzor--two"></div>

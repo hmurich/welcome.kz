@@ -1,7 +1,7 @@
 <span class="zaved-info__heading">{{ $translator->getTransNameByKey('comment_title') }}</span>
 @if (Auth::check())
     {{ Form::open(array('url'=>action('ObjectController@postComment', $object->id), 'method' => 'post', 'role'=>'form')) }}
-        <input type='text' name='title' placeholder="{{ $translator->getTransNameByKey('comment_name') }}" required=""/> <br />
+        <input class="otzyv__input" type='text' name='title' placeholder="{{ $translator->getTransNameByKey('comment_name') }}" required=""/> 
         <ul class="stars stars--click js_stars">
             <li data-score='1'></li>
             <li class='empty' data-score='2'></li>
@@ -10,9 +10,8 @@
             <li class='empty' data-score='5'></li>
         </ul>
         <input type="hidden" name='score' class="js_stars_val" value="1">
-        <br /><br />
-        <textarea name='note' placeholder="{{ $translator->getTransNameByKey('comment_note') }}" required=""></textarea> <br />
-        <input type='submit' />
+        <textarea class="otzyv__textarea" name='note' placeholder="{{ $translator->getTransNameByKey('comment_note') }}" required=""></textarea> <br />
+        <input class="otzyv__add but" type='submit' />
     {{ Form::close() }}
 @else
     <script src="//ulogin.ru/js/ulogin.js"></script>

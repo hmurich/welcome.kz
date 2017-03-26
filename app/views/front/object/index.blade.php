@@ -66,8 +66,8 @@
                             </div>
                         </div>
                         <div class="views">
-                            <span>{{ $translator->getTransNameByKey('wathc') }}:</span>
-                            {{ $object->view_total }} {{ $translator->getTransNameByKey('people') }}
+                            <span class="views__name">{{ $translator->getTransNameByKey('wathc') }}:</span>
+                            {{ $object->view_total }} <span class="views__people">{{ $translator->getTransNameByKey('people') }}</span>
                         </div>
                         @if ($object->relTaxi)
                             <div class="views">
@@ -115,7 +115,6 @@
 				@endif
 				
                 <div class="clear"></div>
-                <br /><br />
                 <div class="zaved-info">
                     @include('front.object.include.comment')
                 </div>

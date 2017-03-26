@@ -5,13 +5,13 @@
 		<span class="h-heading">{{ $title }}</span>
 		<a class="but" href="{{ action('TicketController@getAdd') }}">{{ $translator->getTransNameByKey('add_ticket'); }} </a>
         <a class="but" href="{{ action('CabinetController@getIndex') }}" style='float: right;'>{{ $translator->getTransNameByKey('back_to_cabinet'); }} </a>
-		<ul class="ncab-ul">
+		<ul class="ticket-ul">
             @foreach($items as $i)
                 <li>
-                    <a class="ncab-img" href="#">
-                        {{ $ar_status[$i->status_id] }}
-                    </a>
-                    <div class="ncab-text">
+                    <div class="ticket-part">
+                        <a class="ticket-status" href="#">
+                            {{ $ar_status[$i->status_id] }}
+                        </a>
                         <div class="ncab-up">
                             <span class="ncab-up__heading">
 								{{ $ar_cats[$i->cat_id] }}

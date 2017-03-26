@@ -35,7 +35,7 @@
             </div>
             <div class="zaved-middle">
                 <div class="zaved-middle__left">
-                    <div class="middle-info">
+                    <div class="middle-info middle-info--cab">
                         <div class="rating">
                             <span class="rating__text">{{ $translator->getTransNameByKey('raiting') }}:</span>
                             <ul class="stars">
@@ -52,8 +52,8 @@
                             </div>
                         </div>
                         <div class="views">
-                            <span>{{ $translator->getTransNameByKey('wathc') }}:</span>
-                            {{ $object->view_total }} {{ $translator->getTransNameByKey('people') }}
+                            <span class="views__name">{{ $translator->getTransNameByKey('wathc') }}:</span>
+                            {{ $object->view_total }} <span class="views__people">{{ $translator->getTransNameByKey('people') }}</span>
                         </div>
                         <a class="but middle-info__but" href="#">{{ $translator->getTransNameByKey('show_on_map') }}</a>
                     </div>

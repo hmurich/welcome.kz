@@ -1,4 +1,4 @@
-<header class="header js_map_field_main"  data-city_center='{{ $city_coords }}'>
+<header class="header js_map_field_main" id="container"  data-city_center='{{ $city_coords }}'>
 	<div class="header__inner">
 		<span class="header-option">{{ $title }}</span>
 		<div class="header-options">
@@ -20,13 +20,13 @@
                         </option>
                     @endforeach
     			</select>
-                <input type='submit' />
+                <input class="but but--search"  type='submit' />
 
             {{ Form::close() }}
 
-			<span class="show-filtr" data-close='{{ $translator->getTransNameByKey('close_filter'); }}' data-open='{{ $translator->getTransNameByKey('open_filter'); }}'>
-				{{ $translator->getTransNameByKey('open_filter'); }}
-			</span>
+            <div class="show-filtr {{ (Input::has('role_id') ? 'show-filtr--active' : 'sdfsdf') }}">
+                <span data-close='{{ $translator->getTransNameByKey('close_filter') }}' data-open='{{ $translator->getTransNameByKey('open_filter') }}'>{{ (Input::has('role_id') ? $translator->getTransNameByKey('close_filter') : $translator->getTransNameByKey('open_filter')) }}</span>
+            </div>
 		</div>
 		<ul class="zaved-ul">
             @forelse ($items as $i)

@@ -1,5 +1,5 @@
 
-<header class="header">
+<header class="header" id="container">
     <div class="header__inner">
         <span class="header-option">
             {{ $translator->getTransNameByKey('personal_cabinet') }}
@@ -26,7 +26,7 @@
                 <a href="{{ action('CabinetFieldController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('edit_inform') }}</span></a>
             </li>
 
-            <li class="cab-menu__li cab-menu__li--approve">
+            <li class="cab-menu__li cab-menu__icons cab-menu__li--tag">
                 <a href="{{ action('CabinetTagController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('tag') }}</span></a>
             </li>
 
@@ -34,18 +34,18 @@
                 <a href="{{ action('CabinetNewsController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('news') }}</span></a>
             </li>
 
-            <li class="cab-menu__li cab-menu__li--news">
+            <li class="cab-menu__li cab-menu__icons cab-menu__li--events">
                 <a href="{{ action('CabinetEventController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('events') }}</span></a>
             </li>
-            <li class="cab-menu__li cab-menu__li--news">
+            <li class="cab-menu__li cab-menu__icons cab-menu__li--feedback">
                 <a href="{{ action('CabinetCommentController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('reviews') }}</span></a>
             </li>
             @if ($role->is_reserve)
-                <li class="cab-menu__li cab-menu__li--news">
+                <li class="cab-menu__li cab-menu__icons cab-menu__li--map">
                     <a href="{{ action('CabinetReserveController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('bron') }}</span></a>
                 </li>
             @endif
-            <li class="cab-menu__li cab-menu__li--news">
+            <li class="cab-menu__li cab-menu__icons cab-menu__li--map">
                 <a href="{{ action('CabinetMapController@getIndex', $object->id) }}"><span>{{ $translator->getTransNameByKey('map') }}</span></a>
             </li>
             <li class="cab-menu__li cab-menu__li--add">
