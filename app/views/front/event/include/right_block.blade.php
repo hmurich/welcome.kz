@@ -1,10 +1,10 @@
-<header class="header" id="container">	
+<header class="header" id="container">
     <div class="header__inner">
 		<span class="header-option">
 			Уточните параметры для лучшего поиска
 		</span>
-        <span class="back">Назад</span>
-		<div class="header-options {{ (Input::has('role_id') ? 'header-options--active' : null) }}">
+        <span class="back js_back">Назад</span>
+		<div class="header-options header-options--active">
             {{ Form::open(array('url'=>action('EventController@getIndex'), 'method' => 'get')) }}
                 <select class="header-options__select  js_change_city">
                     <option selected="true" >{{ $translator->getTransNameByKey('select_city', 'Выберите город'); }}</option>
