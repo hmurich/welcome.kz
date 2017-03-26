@@ -12,11 +12,11 @@ class ObjectStandartData extends Eloquent {
 	   return ModelSnipet::formatDate($value, 'd.m.Y H:i:s');
 	}
 
-	function getBeginPriceAttribute($value){
+	function getBeginTimeAttribute($value){
 	   return ModelSnipet::formatDate($value, 'H:i');
 	}
 
-	function getEndPriceAttribute($value){
+	function getEndTimeAttribute($value){
 	   return ModelSnipet::formatDate($value, 'H:i');
 	}
 

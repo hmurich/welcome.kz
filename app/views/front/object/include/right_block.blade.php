@@ -5,7 +5,7 @@
 		<ul class="zaved-ul js_object_list">
             @foreach ($simular_objects as $s)
 				<?php
-					$first_image = $f->relStandartData->logo_catalog;
+					$first_image = $s->relStandartData->logo_catalog;
 
 			        if (!$first_image)
 			            $first_image = 'https://api.fnkr.net/testimg/70x90/00CED1/FFF/?text=img+placeholder';
