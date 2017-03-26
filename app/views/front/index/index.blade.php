@@ -5,7 +5,7 @@
     <header class="header" id="container">
         @include('front.index.include.header')
     </header>   
-    <div class="main-part main-part--main">
+    <div class="main-part main-part--main" id="content">
         <div class="main-part__inner">
             <div class="main-up">
                 <div class="mob-start">

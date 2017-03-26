@@ -9,8 +9,16 @@
 
 @include('front.search.include.right_menu')
 
-<div class="main-part">
-	<div class="map" id='map'></div>
+<div class="main-part" id="content">
+	<div class="map" id='map'>
+		<div class="mam-up">
+      <div class="mob-start mob-start--add">
+          <span></span>
+          <span></span>
+          <span></span>     
+      </div>
+    </div> 
+	</div>
 </div>
 
 @stop

@@ -15,8 +15,8 @@
                 <input type='date' class='vhod__input' name='date_event' placeholder="{{ $translator->getTransNameByKey('event_date') }}" required="" />
                 <input type='time' class='vhod__input' name='time_event' placeholder="{{ $translator->getTransNameByKey('event_time') }}" required="" />
                 <input type='text' class='vhod__input' name='duration' placeholder="{{ $translator->getTransNameByKey('event_duration') }}"  required="" />
-                <input type='file' class='vhod__input' name='image' required="" />
-                <textarea class='vhod__input' name='note' placeholder="{{ $translator->getTransNameByKey('event_note') }}"></textarea>
+                <input type='file' class='vhod__file' name='image' required="" />
+                <textarea class='vhod__textarea' name='note' placeholder="{{ $translator->getTransNameByKey('event_note') }}"></textarea>
 
                 <div class="vhod-but">
                     <button class="but vhod-but__left" type="submit">{{ $translator->getTransNameByKey('ticket_send') }}</button>

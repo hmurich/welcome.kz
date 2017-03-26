@@ -1166,7 +1166,7 @@ textarea {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.bot-search:focys:-moz-placeholder {
+.bot-search:focus:-moz-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -1178,7 +1178,6 @@ textarea {
   position: absolute;
   left: 0;
   right: 0;
-  margin-top: 10px;
   padding-bottom: 100px;
 }
 
@@ -1244,6 +1243,9 @@ textarea {
 .zaved-up__img {
   float: left;
 }
+.but--search{
+  margin-bottom:10px;
+}
 .upzaved-text {
   margin-left: -210px;
 }
@@ -1288,7 +1290,7 @@ textarea {
 }
 .zaved-photo {
   overflow: hidden;
-  margin-bottom: 15px;
+  margin-bottom:5px;
 }
 .zaved-big {
   float: left;
@@ -1385,7 +1387,7 @@ textarea {
   color: #1da8da;
   line-height: 34px;
 }
-.views span {
+.views__name {
   color: #626262;
 }
 .zaved-content {
@@ -1733,18 +1735,71 @@ textarea {
   border: 1px solid #d6d6d6;
   width: 350px;
   height: 32px;
+  color: #444;
   padding: 0 10px;
   margin-bottom: 16px;
   box-sizing: border-box;
 }
-.vhod__textarea {
+.vhod__input::-webkit-input-placeholder,.vhod__textarea::-webkit-input-placeholder {
+  color: #444;
+  opacity: 1;
+  padding: 0 2px;
+  transition: opacity 0.3s ease;
+}
+.vhod__input::-moz-placeholder,.vhod__textarea::-moz-placeholder {
+  color: #444;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.vhod__input:-moz-placeholder,.vhod__textarea:-moz-placeholder {
+  color: #444;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.vhod__input:-ms-input-placeholder,.vhod__textarea:-ms-input-placeholder {
+  color: #444;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.vhod__input:focus::-webkit-input-placeholder,.vhod__textarea:focus::-webkit-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.vhod__input:focus::-moz-placeholder,.vhod__textarea:focus::-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.vhod__input:focus:-moz-placeholder,.vhod__textarea:focus:-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.vhod__input:focus:-ms-input-placeholder,.vhod__textarea:focus:-ms-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.vhod__textarea{
   border: 1px solid #d6d6d6;
   width: 350px;
   height: 90px;
   resize:vertical;
+  resize:none;
   padding: 10px 10px;
   margin-bottom: 16px;
   box-sizing: border-box;
+}
+.vhod__file{
+  border: 1px solid #d6d6d6;
+  width: 100%;
+  box-sizing: border-box;
+  height: 32px;
+  line-height: 24px;
+  color: #7b7b7b;
+  text-indent: 8px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  padding: 0;
+  text-indent: 0;
+  background-color: #fff;
 }
 .vhod__forget {
   display: block;
@@ -2148,7 +2203,7 @@ textarea {
   height: 35px;
   padding: 0 10px;
   margin-bottom: 2px;
-  border:1px solid #b2b2b2;
+  border: 1px solid rgba(178, 178, 178, 0.57);
 }
 .otzyv__textarea{
   width:100%;
@@ -2159,7 +2214,7 @@ textarea {
   margin-top:15px;
   margin-bottom:10px;
   resize:none;
-  border:1px solid #b2b2b2;
+  border: 1px solid rgba(178, 178, 178, 0.57);
 }
 
 @media screen and (max-width: 1220px) {
@@ -2210,7 +2265,7 @@ textarea {
     right: 42px;
   } 
 }
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 1045px) {
   .header{
     position:fixed;
     left:-300px;
@@ -2244,6 +2299,9 @@ textarea {
     width: 26px;
     cursor:pointer; 
     animation:opacity 0.7s ease-in;
+  }
+  .zaved-up__img{
+    display:none;
   }
   .uzor--three{
     display:none;
@@ -2438,6 +2496,7 @@ textarea {
   }
   .zaved-middle__left{
     width:100%;
+    float:none;
   }
   .zaved-content__left{
   	float:none;
@@ -2477,6 +2536,27 @@ textarea {
     margin-bottom:25px;
     margin-right:0;
   }
+  .zaved-middle{
+    position:relative;
+  }
+  .zaved-middle__right{
+    border-bottom:none;
+    position:absolute;
+    right:0;
+    float:none;
+    width:auto;
+    top:0;
+  }
+  .zaved-middle__right .but{
+    padding:0 10px;
+    width:auto;
+  }
+  .middle-info__but{
+      display:none;
+  }
+  .rating{
+    margin-right:15px;
+  }
 }
 @media screen and (max-width: 600px) {
   .middle-info__but{
@@ -2492,7 +2572,7 @@ textarea {
   .middle-info__but:hover{
     background-color:transparent;
   }
-  .views span{
+  .views__name{
     font-size: 0px;
     width: 16px;
     height: 16px;
@@ -2502,6 +2582,14 @@ textarea {
     float: left;
     margin-top: 8px;
     margin-right: 6px;
+  }
+  .views__people{
+    font-size:0px;
+  }
+  .views__people:after {
+    content: "ч.";
+    font-size:14px;
+    display: inline;
   }
   .news-right li{
     width:50%;
@@ -2560,6 +2648,9 @@ textarea {
     text-align: center;
     margin-top: 10px;
     margin-left: 10px;
+  }
+  .zaved-info__heading{
+    font-size:16px;
   }
 }
 @media screen and (max-width: 500px) {
@@ -2630,5 +2721,29 @@ textarea {
     margin-bottom:15px;
     font-size: 33px;
     line-height: 36px;
+  }
+  .zaved-middle__right{
+    position:static;
+    margin-top:12px;
+  }
+  .zaved-middle{
+    margin-bottom:0;
+  }
+  .zaved-middle__right .but{
+    width:100%;
+  }
+  .vhod-part{
+    width:auto;
+    display:block;
+    padding:20px 15px;
+  }
+  .vhod__input,.vhod__textarea{
+    width:100%;
+  }
+  .vhod__heading{
+    font-size:24px;
+  }
+  .news-right li{
+    width:100%;
   }
 }
