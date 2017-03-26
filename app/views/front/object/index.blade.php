@@ -110,9 +110,10 @@
                 </div>
 
                 <div class="clear"></div>
-
-                <div class="zaved-map js_map_field_main map" id='map' data-lng='{{ $location->lng }}' data-lat='{{ $location->lat }}'></div>
-
+				@if (isset($location))
+                	<div class="zaved-map js_map_field_main map" id='map' data-lng='{{ $location->lng }}' data-lat='{{ $location->lat }}'></div>
+				@endif
+				
                 <div class="clear"></div>
                 <div class="zaved-info">
                     @include('front.object.include.comment')

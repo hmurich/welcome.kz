@@ -77,12 +77,14 @@ class MapController extends PublicController {
         $geo = array();
         foreach($filters as $f){
             $ar = array();
-            if (!$f->relLocation)
+            if (!$f->relLocation || !$f->relStandartData)
                 continue;
             $ar['lng'] = $f->relLocation->lng;
             $ar['lat'] = $f->relLocation->lat;
             $ar['id'] = $f->id;
             $ar['name'] = $f->name;
+            $ar['address'] = $f->relStandartData->address;
+            $ar['note'] = $f->relStandartData->note;
 
             $geo[] = $ar;
         }
@@ -108,22 +110,23 @@ class MapController extends PublicController {
         $ar['id'] = $f->id;
         $ar['name'] = $f->name;
 
-        $first_image = $f->relSliders()->first();
-        if ($first_image)
-            $ar['logo'] = $first_image->image;
-        else
-            $ar['logo'] = $f->relStandartData->logo;
+
+        $ar['logo'] = $f->relStandartData->logo_catalog;
+
+        if (!$ar['logo'])
+            $ar['logo'] = 'https://api.fnkr.net/testimg/70x90/00CED1/FFF/?text=img+placeholder';
 
         $ar['time_begin'] = $f->relStandartData->begin_time;
         $ar['time_end'] = $f->relStandartData->end_time;
 
         $options = array();
-
+        $options['Краткий описание'] = $f->relStandartData->slogan;
         $fields =  $f->relSpecialData()->where('show_filter', 1)->get();
         foreach ($fields as $i) {
             $filter_name = $this->translator->getTransNameByKey(SysFilter::getTransKey($i->filter_id));
             $options[$filter_name] = implode(", ", $i->getVal());
         }
+        $options['Адресс'] = $f->relStandartData->address;
 
         $ar['options'] = $options;
 

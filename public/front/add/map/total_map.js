@@ -75,8 +75,11 @@ function init()
         myCollection = new ymaps.GeoObjectCollection();
 
         jQuery.each(objects, function( key, value ) {
+            var text_baloon = '<a href="/show/index/' + value.id + '">' + value.name + '</a>';
+            text_baloon = text_baloon + '<p>'+value.note+'</p>';
+            text_baloon = text_baloon + '<p>'+value.address+'</p>';
             placemark = new ymaps.Placemark([value.lng, value.lat], {
-               balloonContent: '<a href="/show/index/' + value.id + '">' + value.name + '</a>'
+               balloonContent: text_baloon
             });
 
             myCollection.add(placemark);
@@ -107,14 +110,14 @@ function init()
                                         + '<ul class="info-ul">';
             jQuery.each(value.options, function( key, value ) {
                 element = element + '<li>'
-                        + '<span>' + key + ':</span>' + value
+                        + value
                    + '</li>';
             });
 
 
             element = element           + '</ul>'
                                         + '<p class="info-zaved__regym">'
-                                            + '<span>Режим работы:</span> 12:00 - 00.00'
+                                            + '<span>Режим работы:</span> ' + value.time_begin + ' - ' + value.time_end + ''
                                         + '</p>'
                                     + '</div>'
                                 + '</a>'

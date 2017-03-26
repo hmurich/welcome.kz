@@ -9,5 +9,9 @@
         @endforeach
     </select>
 @else
-    <input class="edit-row__input" name='data[{{ $s->relFilter->spec_key }}][]' type="text" value='{{ array_shift($ar_values[$s->relFilter->spec_key]) }}' required>
+    @if (isset($ar_values[$s->relFilter->spec_key]))
+        <input class="edit-row__input" name='data[{{ $s->relFilter->spec_key }}][]' type="text" value='{{ array_shift($ar_values[$s->relFilter->spec_key]) }}' required>
+    @else
+        <input class="edit-row__input" name='data[{{ $s->relFilter->spec_key }}][]' type="text"  required>
+    @endif
 @endif

@@ -3,7 +3,7 @@
 		<span class="header-option">{{ $title }}</span>
 		<div class="header-options">
             {{ Form::open(array('url'=>action('SearchController@getIndex'), 'method' => 'get')) }}
-                <input type='text' name='name' class='header-options__select' value="{{ $search }}" />
+                <input type='text' name='search' class='header-options__select' value="{{ $search }}" />
                 <select class="header-options__select  js_change_city">
                     <option selected="true" >{{ $translator->getTransNameByKey('select_city', 'Выберите город'); }}</option>
                     @foreach ($cities as $id => $name))
@@ -29,7 +29,7 @@
             </div>
 		</div>
 		<ul class="zaved-ul">
-            @foreach ($items as $i)
+            @forelse ($items as $i)
                 <li class="js_object_li" data-lng='{{ $i["lng"] }}' data-lat='{{ $i["lat"] }}' data-name='{{ $i["name"] }}' data-id='{{ $i["id"] }}'>
                     <a class="mini-zaved" href="{{ action('ObjectController@getIndex', $i['id']) }}">
                         <img class="mini-zaved__img" src="{{ $i['logo'] }}" style="max-width: 70px;">
@@ -40,7 +40,7 @@
                             <ul class="info-ul">
                                 @foreach ($i['options'] as $k => $v)
                                     <li>
-                                        <span>{{ $k }}:</span> {{ $v }}
+                                         {{ $v }}
                                     </li>
                                 @endforeach
                             </ul>
@@ -50,7 +50,9 @@
                         </div>
                     </a>
                 </li>
-            @endforeach
+			@empty
+	    		<p>Нет результата</p>
+            @endforelse
 		</ul>
 	</div>
 	<div class="uzor uzor--one"></div>

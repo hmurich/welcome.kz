@@ -5,13 +5,13 @@
     <header class="header" id="container">
         @include('front.index.include.header')
     </header>   
-    <div class="main-part main-part--main" id="content">
+    <div class="main-part main-part--main" id="content">   
         <div class="main-part__inner">
             <div class="main-up">
                 <div class="mob-start">
                     <span></span>
                     <span></span>
-                    <span></span>     
+                    <span></span>
                 </div>
                 <div class="social">
                     <ul class="ul-social">
@@ -43,7 +43,7 @@
                 <h1 class="main-search__heading">Welcome<br> to kazakhstan</h1>
                 <form method="GET" action='{{ action("SearchController@getIndex") }}' class='js_send_search_form'>
                     <div class="search-part">
-                    	<input class="search-part__input js_send_search_value" type="text" placeholder="Я ищу..." name='search'>
+                    	<input class="search-part__input js_send_search_value" type="text" placeholder="Я ищу..." name='search' required="">
                    		<input class="search-part__submit" type="submit">
                    	</div>
                 </form>

@@ -1,4 +1,17 @@
 $(document).ready(function() {
+    // return functio
+    $('.js_back_link').click(function(){
+        console.log('asdads');
+        parent.history.back();
+		return false;
+    });
+
+    //upload logo function
+    $('.js_upload_logo').click(function(){
+        var id = $(this).data('id');
+        $('#'+id).click();
+    });
+
     // функии показа высплывающего окна
     if (($(".js_alert_mess_block").length > 0)){
 		$('.js_alert_mess_block .alert-exit').click(function(){

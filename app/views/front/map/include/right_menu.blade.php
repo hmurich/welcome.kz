@@ -1,10 +1,10 @@
 <header class="header js_map_field_main" id="container" data-cat_id='{{ $cat->id }}' data-city_center='{{ $city_coords }}'>
 	<div class="header__inner">
 		<span class="header-option">{{ $translator->getTransNameByKey(SysCompanyCat::getTransKey($cat->id), $cat->name) }}</span>
-		<span class="back">Назад</span>
+		<span class="back js_back_link">Назад</span>
 		<div class="header-options">
 			<select class="header-options__select  js_change_city" data-reload='1'>
-	            <option selected="true" disabled>{{ $translator->getTransNameByKey('select_city'); }}</option>
+	            <option selected="true" disabled>{{ $translator->getTransNameByKey('select_city', 'Выберите город'); }}</option>
 	            @foreach ($cities as $id => $name))
 	                <option value='{{ $id }}' {{ ($city_id == $id ? 'selected' : null) }}>
 	                    {{ $translator->getTransNameByKey(SysDirectoryName::getTransKey($id), $name); }}
