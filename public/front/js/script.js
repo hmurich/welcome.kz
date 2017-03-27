@@ -22,6 +22,11 @@ $(document).ready(function(){
           $('.header').addClass('header--active');
       }                           
   });
+  $('.header-slider').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows:true      
+  });
 	  $('.slider').slick({
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -45,4 +50,11 @@ $(document).ready(function(){
         }
     ]
    });
+   $('.vhod-but__left').on('click', function () {
+    if($('.vhod__input--password').length < 4){
+    alert('В nameVar должно быть не менее 4-х символов!');
+    // nameForm.nameVar.focus();
+    // return false;
+    };
+  }); 
 });
