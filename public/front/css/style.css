@@ -1764,6 +1764,9 @@ textarea {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
+.password-div{
+  position:relative;
+}
 .vhod__textarea{
   border: 1px solid #d6d6d6;
   width: 350px;
@@ -1901,6 +1904,10 @@ textarea {
   content: "";
   background-image: url(../img/add-zaved.png);
 }
+.cab-menu__li--exit:before {
+  content: "";
+  background-image: url(../img/exit-cab.png);
+}
 .cab-menu__icons:before {  
   content:"";
   background-image:url(../img/menu-icon.png);
@@ -1927,6 +1934,9 @@ textarea {
 }
 .but-support {
   width: 260px;
+}
+.exit-cab{
+  
 }
 .h-heading {
   text-align: center;

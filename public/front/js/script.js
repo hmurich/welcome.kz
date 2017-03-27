@@ -25,7 +25,9 @@ $(document).ready(function(){
   $('.header-slider').slick({
       slidesToShow: 1,
       slidesToScroll: 1,
-      arrows:true      
+      arrows:true,
+      autoplay: true,
+      autoplaySpeed: 2000
   });
 	  $('.slider').slick({
       slidesToShow: 1,
@@ -50,11 +52,11 @@ $(document).ready(function(){
         }
     ]
    });
-   $('.vhod-but__left').on('click', function () {
-    if($('.vhod__input--password').length < 4){
-    alert('В nameVar должно быть не менее 4-х символов!');
-    // nameForm.nameVar.focus();
-    // return false;
-    };
-  }); 
+  //  $('.vhod-but__left').on('click', function () {
+  //   if($('.vhod__input--password').length < 8){
+  //   $('.password-div').addClass('.password-div--active');
+  //   $('.vhod__input--password').focus();
+  //   return false;
+  //   };
+  // }); 
 });

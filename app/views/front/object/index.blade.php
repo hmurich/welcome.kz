@@ -69,12 +69,7 @@
                             <span class="views__name">{{ $translator->getTransNameByKey('wathc') }}:</span>
                             {{ $object->view_total }} <span class="views__people">{{ $translator->getTransNameByKey('people') }}</span>
                         </div>
-                        @if ($object->relTaxi)
-                            <div class="views">
-                                <span>{{ $translator->getTransNameByKey('taxi_name') }}:</span>
-                                <a href="tel:{{ $object->relTaxi->phone }}"> {{ $object->relTaxi->phone }}</a>
-                            </div>
-                        @endif
+
                         <a class="but middle-info__but" href="#map">{{ $translator->getTransNameByKey('show_on_map') }}</a>
                     </div>
                 </div>
@@ -88,6 +83,12 @@
                 <div class="zaved-content__left">
                     <div class="zaved-info">
                         <ul class="spisok">
+                            <li>
+                                @if ($object->relTaxi)                                    
+                                    <span>{{ $translator->getTransNameByKey('taxi_name') }}:</span>
+                                    <a href="tel:{{ $object->relTaxi->phone }}"> {{ $object->relTaxi->phone }}</a>                                    
+                                @endif
+                            </li>
                             <li><span>{{ $translator->getTransNameByKey('zaved_title') }}:</span>{{ $object->name }}</li>
                             @if ($standart_data)
                                 <li><span>{{ $translator->getTransNameByKey('zaved_slogan') }}:</span>{{ $standart_data->slogan }}</li>

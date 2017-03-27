@@ -51,7 +51,10 @@
             <li class="cab-menu__li cab-menu__li--add">
                 <a href="{{ action('TicketController@postNewRole') }}"><span>{{ $translator->getTransNameByKey('add_zaved_href') }}</span></a>
             </li>
-        </ul>
+            <li class="cab-menu__li cab-menu__li--exit">
+            	<a href="#"><span>Выйти</span></a>
+            </li>
+        </ul>        
         <div class="header-bot header-bot--cab">
             <div class="header-bot__inner">
                 <a href="{{ action('TicketController@getIndex') }}" class="but but-support">
