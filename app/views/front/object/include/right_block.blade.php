@@ -1,6 +1,6 @@
 <header class="header" id="container">
 	<div class="header__inner">
-		<span class="header-option">{{ $object->name }}</span>
+		<span class="header-option">Похожие заведения</span>
         <span class="back js_back_link">Назад</span>
 		<ul class="zaved-ul js_object_list">
             @foreach ($simular_objects as $s)
@@ -11,8 +11,9 @@
 			            $first_image = 'https://api.fnkr.net/testimg/70x90/00CED1/FFF/?text=img+placeholder';
 				?>
 
-                <li class='{{ ($s->id == $object->id ? "main_object" : null) }}'>
-    				<a class="mini-zaved" href="{{ action('ObjectController@getIndex', $s->id) }}">
+                <li class=''>
+    				<a class="mini-zaved {{ ($s->id == $object->id ? "mini-zaved--active" : null) }}"
+						href="{{ action('ObjectController@getIndex', $s->id) }}">
     					<img class="mini-zaved__img" src="{{ $first_image }}" style="max-width: 80px; margin-right: 5px;">
     					<div class="info-zaved">
     						<span class="info-zaved__heading">

@@ -13,7 +13,7 @@
 				<div class="mob-start mob-start--add">
                     <span></span>
                     <span></span>
-                    <span></span>     
+                    <span></span>
                 </div>
                 <div class="where-up">
 					<h3 class="upzaved-text__heading">
@@ -58,7 +58,7 @@
                                         </div>
                                     </div>
                                     @if ($e->relObject->is_active && $e->relObject->is_open)
-                                        <a class="but where-rate__but" href="{{ action('ObjectController@getIndex', $e->object_id) }}">{{ $translator->getTransNameByKey('cabinet') }}</a>
+                                        <a class="but where-rate__but" href="{{ action('ObjectController@getIndex', $e->object_id) }}">Перейти в заведение</a>
                                     @else
                                         <span class="but where-rate__but">{{ $translator->getTransNameByKey('cabinet_close') }}</span>
                                     @endif
