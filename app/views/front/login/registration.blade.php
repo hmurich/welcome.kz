@@ -6,7 +6,7 @@
             {{ Form::open(array('url'=>action('LoginController@postRegistration'), 'method' => 'post')) }}
                 <span class="vhod__heading">{{ $translator->getTransNameByKey('registr_title') }}</span>
                 <input class="vhod__input" name='login' type="text" placeholder="{{ $translator->getTransNameByKey('registr_login') }}" required="">
-                <input class="vhod__input" name='password' type="password" placeholder="{{ $translator->getTransNameByKey('registr_pass') }}" required="">
+                <input class="vhod__input vhod__input--password" name='password' type="password" placeholder="{{ $translator->getTransNameByKey('registr_pass') }}" required="">
                 <input class="vhod__input" name='email' type="email" placeholder="{{ $translator->getTransNameByKey('registr_email') }}" required="">
                 <input class="vhod__input" name='name' type="text" placeholder="{{ $translator->getTransNameByKey('registr_name') }} " required="">
                 <input class="vhod__input" name='address' type="text" placeholder="{{ $translator->getTransNameByKey('registr_address') }}" required="">
@@ -18,6 +18,7 @@
                 </div>
             {{ Form::close() }}
         </div>
+
     </div>
 </div>
 @stop

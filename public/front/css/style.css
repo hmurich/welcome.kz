@@ -460,13 +460,13 @@ body {
 .slick-next {
   position: absolute;
   display: block;
-  height: 20px;
-  width: 20px;
+  height: 24px;
+  width: 24px;
   line-height: 0px;
   font-size: 0px;
   cursor: pointer;
-  background: transparent;
-  color: transparent;
+  z-index:6;
+  background-color:#1da8da;
   top: 50%;
   -webkit-transform: translate(0, -50%);
   -ms-transform: translate(0, -50%);
@@ -474,14 +474,15 @@ body {
   padding: 0;
   border: none;
   outline: none;
+  border-radius:50%;
+  background-image:url(../img/arrow-right.svg);
+  background-size:12px;
+  background-repeat:no-repeat;
+  background-position:center;
 }
 .slick-prev:hover,
-.slick-next:hover,
-.slick-prev:focus,
-.slick-next:focus {
-  outline: none;
-  background: transparent;
-  color: transparent;
+.slick-next:hover{
+  background-color: #555;
 }
 .slick-prev:hover:before,
 .slick-next:hover:before,
@@ -503,31 +504,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 .slick-prev {
-  left: -25px;
+  left: 5px;
+  transform: rotateY(180deg);
+  margin-top: -12px;
 }
 .slick-prev[dir="rtl"] {
   left: auto;
-  right: -25px;
+  right: 5px;
 }
-.slick-prev:before {
-  content: "←";
-}
-.slick-prev:before[dir="rtl"] {
-  content: "→";
-}
+
 .slick-next {
-  right: -25px;
+  right: 5px;
 }
 .slick-next[dir="rtl"] {
-  left: -25px;
+  left: 5px;
   right: auto;
 }
-.slick-next:before {
-  content: "→";
-}
-.slick-next:before[dir="rtl"] {
-  content: "←";
-}
+
 /* Dots */
 .slick-dotted .slick-slider {
   margin-bottom: 30px;
@@ -673,8 +666,8 @@ textarea {
   text-transform: uppercase;
   font-family: 'Proxima Nova';
   color: #1da8da;
-  margin-bottom: 25px;
-  margin-top: 40px;
+  margin-bottom: 20px;
+  margin-top: 35px;
 }
 .header-options {
   border-top: 1px solid #d6d6d6;
@@ -682,6 +675,11 @@ textarea {
   height: 105px;
   overflow: hidden;
   position: relative;
+}
+.header-slider{
+  position:relative;
+  z-index:6;
+  margin-top: 25px;
 }
 .header-options--main {
   height: auto;
@@ -808,7 +806,7 @@ textarea {
     height: 30px;
 }
 .menu {
-  margin-top: 35px;
+  margin-top: 30px;
 }
 .menu__li {
   margin-bottom: 16px;
@@ -1089,6 +1087,7 @@ textarea {
     width: 362px;
     z-index: 3;
     left: 0;
+    background-color:#fff;
     padding: 6px 0 45px 0;
 }
 
@@ -1457,8 +1456,10 @@ textarea {
   color: #1da8da;
 }
 .open-cab {
-  overflow:hidden;
-  display:block;
+  overflow: hidden;
+  display: block;
+  width: 199px;
+  margin: 0 auto;
 }
 .open-cab__text{
   float: left;
@@ -1503,30 +1504,16 @@ textarea {
   background-repeat:no-repeat;
   transition:all 0.4s ease-in;
 }
-.open-cab:hover .open-cab__area:before{
-  transform: translate(-100%, 0);
-  background-color: #1da8da;
-  background-image: url(../img/ticky.svg);
+.open-cab:hover .open-cab__text{
+      color: #006cff;
 }
 .open-cab__area--area2:before{
   transform: translate(-100%, 0);
   background-color: #1da8da;
   background-image: url(../img/ticky.svg);
 }
-.open-cab:hover .open-cab__area--area2:before{
-  transform: translate(0%, 0);
-  background-color: #7b7b7b;
-  background-image: url(../img/close.svg);
-}
-.open-cab:hover .open-cab__text{
-  color: #006cff;
-}
-.open-cab:hover .open-cab__area{
-  border:1px solid #1da8da;
-} 
-.open-cab:hover .open-cab__area--area2{
-  border:1px solid #7b7b7b;
-} 
+
+
 .news-text__text {
   font-size: 14px;
   margin-bottom: 6px;
@@ -2041,6 +2028,57 @@ textarea {
   border-bottom: 1px solid #e5e5e5;
   padding: 14px 0;
 }
+.ticket-ul{
+  margin-top:20px;
+}
+.ticket-ul li{
+  background-color:#fff;
+  margin-bottom:20px;
+}
+.ticket-part{
+  padding:12px;
+  position:relative;
+}
+.ticket-status{  
+  font-size: 15px; 
+  margin-bottom:3px;
+  display:block;
+}
+.ticket-history{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 15px;
+  color: #444;
+  text-decoration: underline;
+}
+.ticket-history:hover{
+  color: #1da8da;
+}
+.ticket-history:before{
+  content: "";
+  position: absolute;
+  left: -28px;
+  top: -3px;
+  border: 1px solid #1da8da;
+  width: 22px;
+  height: 22px;
+  background-size: 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  background-image: url(../img/history.svg);
+}
+.ticket-part__heading{
+  display: block;
+  margin-bottom: 6px;
+  font-size: 18px;
+  color: #000;
+  font-weight: bold;
+}
+.ticket-status__name{
+  font-weight:bold;
+}
 .ncab-img {
   float: left;
 }
@@ -2118,6 +2156,10 @@ textarea {
   box-sizing:border-box;
   height:170px;
   position:relative;
+}
+.d-photo__file:hover:after{
+  background-color:#f3f3f3;
+  cursor:pointer;
 }
 .d-photo__file:after{
   content: "";
@@ -2586,6 +2628,15 @@ textarea {
   .views__people{
     font-size:0px;
   }
+  .ticket-part{
+    padding-bottom:45px;
+  }
+  .ticket-history{
+    bottom: 16px;
+    left: 39px;
+    top: auto;
+    display: block;
+  }
   .views__people:after {
     content: "ч.";
     font-size:14px;
@@ -2658,6 +2709,9 @@ textarea {
     float:none;
     width:100%;
   }
+  .zaved-middle{
+    margin-bottom:10px;
+  }
   .edit-parts div:nth-child(2n){
     margin-left:0;
   }
@@ -2709,13 +2763,25 @@ textarea {
     right:0;
     top:0;
   }
+  .middle-info--cab{    
+    margin-bottom:10px;
+  }
 }
 @media screen and (max-width: 390px) {
   .photo-ul li{
     width:100%;
   }
+  .upzaved-text__heading {
+    font-size: 20px;
+  }
   .photo-ul{
     margin-right:0;
+  }
+  .middle-info{
+    padding-bottom:2px;
+  }
+  .zaved-middle{
+    margin-bottom:5px;
   }
   .main-search__heading{
     margin-bottom:15px;
@@ -2726,8 +2792,8 @@ textarea {
     position:static;
     margin-top:12px;
   }
-  .zaved-middle{
-    margin-bottom:0;
+  .middle-info{
+    padding-bottom:0;
   }
   .zaved-middle__right .but{
     width:100%;
@@ -2745,5 +2811,5 @@ textarea {
   }
   .news-right li{
     width:100%;
-  }
+  }  
 }
