@@ -12,7 +12,7 @@
 <div class="main-part">
 	<div class="map" id='map'>
 		<div class="mam-up">
-      <div class="mob-start mob-start--add">
+      <div class="mob-start mob-start--active mob-start--add">
           <span></span>
           <span></span>
           <span></span>     

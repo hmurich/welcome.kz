@@ -36,7 +36,7 @@
                 <input class="but header-options__but" type='submit' />
 
             {{ Form::close() }}
-			<div class="show-filtr {{ (Input::has('role_id') ? 'show-filtr--active' : 'sdfsdf') }}">
+			<div class="show-filtr show-filtr--active {{ (Input::has('role_id') ? 'show-filtr--active' : 'sdfsdf') }}">
 				<span data-close='{{ $translator->getTransNameByKey('close_filter') }}' data-open='{{ $translator->getTransNameByKey('open_filter') }}'>{{ (Input::has('role_id') ? $translator->getTransNameByKey('close_filter') : $translator->getTransNameByKey('open_filter')) }}</span>
 			</div>
 		</div>

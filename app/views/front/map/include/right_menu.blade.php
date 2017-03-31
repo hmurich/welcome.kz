@@ -1,4 +1,4 @@
-<header class="header js_map_field_main" id="container" data-cat_id='{{ $cat->id }}' data-city_center='{{ $city_coords }}'>
+<header class="header header--active js_map_field_main" id="container" data-cat_id='{{ $cat->id }}' data-city_center='{{ $city_coords }}'>
 	<div class="header__inner">
 		<span class="header-option">{{ $translator->getTransNameByKey(SysCompanyCat::getTransKey($cat->id), $cat->name) }}</span>
 		<span class="back js_back_link">Назад</span>
